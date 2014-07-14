@@ -3,46 +3,87 @@ if (select(2, UnitClass"player") ~= "MONK") then return end
 local _, bindings = ...
 
 --[[
+		Clique setup
+		------------
+
+		Mouseover healing (BUTTON4 at rear)
+
+		BUTTON4			Renewing Mist
+		shift-BUTTON4	Surging Mist
+		alt-BUTTON4
+		ctrl-BUTTON4
+
+		BUTTON5			Soothing Mist
+		shift-BUTTON5	Enveloping Mist
+		alt-BUTTON5		Uplift
+		ctrl-BUTTON5
+
+		C				Cleanse
+
+		General setup
+		-------------
+
+		-- Mouse
+		#, BUTTON4, BUTTON5		Primary rotation abilities / heals
+		BUTTON3                 Interrupts/Stuns/CC
+		6                       Defensive cooldowns
+		7                       Misc / Sacred Shield / Divine Shield / Divine Plea
+		8                       All HoPo uses
+		9                       Misc / Talents
+
+		-- Keyboard
+		E                       Taunts
+		F                       Get out of jail free -> Every man for himself, Emancipate, Healthstone
+		R                       Trinkets
+		G                       Cooldown
+		`                       Avenging Wrath and anything that should be tied to its use
+		\                       Redemption/Mass Ressurection
 --]]
 
 local monkBase = {
 	-- Mouse based
-	BUTTON3	= "m|/stopcasting\n/cast Spear Hand Strike",	-- Interrupt
-	BUTTON4 = "m|/cast !Spinning Crane Kick\n/cast !Rushing Jade Wind", -- Main Rotation - AoE
-	["'"]	= "s|Jab", 					-- Main rotation
-	["#"] 	= "s|Blackout Kick",  		-- Main rotation
-	[5]		= "m|/cast Dampen Harm\n/cast Diffuse Magic", -- Damage reduction (<3 min)
-	[9]		= "s|Roll", 				-- Escape/CC
+	BUTTON3	= "m|/stopcasting\n/cast Spear Hand Strike",				-- Interrupt
+	BUTTON4 = "s|Blackout Kick", 										-- Main Rotation
+	BUTTON5 = "s|Jab",													-- Main Rotation
+	["#"] 	= "m|/cast !Spinning Crane Kick\n/cast !Rushing Jade Wind",	-- Main rotation - AoE
+	[6]		= "m|/cast Dampen Harm\n/cast Diffuse Magic", 				-- Damage reduction (<3 min)
+	[7]		= "",
+	[8]		= "s|Uplift",
+	[9]		= "s|Roll",
 
 	-- Keyboard based
-	C		= "m|/cast [@MOUSEOVER][] Detox", -- Dispell
-	E 		= "s|Provoke",			-- Taunt
-	R		= "m|/qc\n/use 12",		-- Trinket 1
-	F		= "s|Nimble Brew",	-- Get out of jail free card
-	["\\"] 	= "m|/cast [@MOUSEOVER,dead][@TARGET,dead][] Resuscitate",	-- Res
-	["`"] 	= "m|/use 12\n/use 13\n/cast Tigereye Brew\n/cast Invoke Xuen, the White Tiger",	-- "Major" cooldown
+	C		= "m|/cast [@MOUSEOVER][] Detox", 								-- Dispell
+	E 		= "s|Provoke",													-- Taunt
+	R		= "m|/use 12",													-- Trinket 1
+	F		= "s|Nimble Brew",												-- Get out of jail free card
+	["\\"] 	= "m|/cast [@MOUSEOVER,dead][@TARGET,dead][] Resuscitate",		-- Res
+	["`"] 	= "m|/cast Tigereye Brew\n/cast Invoke Xuen, the White Tiger",	-- "Major" cooldown
 
 	shift 	= {
 		-- Mouse based
-		BUTTON3	= "s|Grapple Weapon",
-		["'"] 	= "s|Tiger Palm",								-- Main rotation
-		[5]		= "s|Fortifying Brew", 							-- Damage Reduction (>= 3min)
-		[6]		= "s|Zen Meditation",							-- Kinda like bubble ... but not really ...
+		BUTTON3	= "m|/cast [@MOUSEOVER,help][] Ring of Peace\n/cast Leg Sweep",
+		BUTTON4 = "s|Rising Sun Kick",
+		BUTTON5 = "s|Tiger Palm",
+		["#"] 	= "s|Fists of Fury",	 -- Main rotation
+		[6]		= "s|Fortifying Brew", 							-- Damage Reduction (>= 3min)
+		[7]		= "s|Zen Meditation",							-- Kinda like bubble ... but not really ...
+		[8]		= "m|/cast [@MOUSEOVER,help][] Chi Wave\n/cast [@MOUSEOVER,help][] Zen Sphere\n/cast Chi Burst",
 		[9] 	= "s|Flying Serpent Kick",
 
 		-- Keyboard based
-		F		= "m|/use 13",			-- Trinket (pvp)
-		R		= "m|/qc\n/use 13",		-- Trinket 2 on use,
+		R		= "m|/use 13",		-- Trinket 2 on use,
 		G		= "s|Chi Brew",
 	},
 
 	alt 	= {
 		-- Mouse based
 		BUTTON3 = "m|/stopcasting\n/cast [@FOCUS,harm][] Paralysis", 	-- Long term CC
-		BUTTON4 = "m|/cast [@MOUSEROVER,help][] Chi Wave\n/cast [@MOUSEOVER,help][] Zen Sphere\n/cast Chi Burst",
-		["'"]	= "m|/cast [@MOUSEOVER,help][] Expel Harm", 			-- "Main" rotation
-
-		[5] 	= "s|Touch of Karma", 									-- Damage Reduction (Other)
+		BUTTON4 = "s|Expel Harm",
+		BUTTON5 = "s|Crackling Jade Lightning",
+		["#"]	= "s|Touch of Death",
+		[6] 	= "m|/cast Fortifying Brew\n/cast Touch of Karma", -- Damage Reduction (Other)
+		[7]		= "",
+		[8]		= "",
 		[9]		= "m|/cast [@MOUSEROVER,help][] Tiger's Lust",	-- Speed increase
 
 		-- Keyboard based
@@ -50,9 +91,62 @@ local monkBase = {
 
 	ctrl 	= {
 		-- Mouse based
-		BUTTON3	= "m|/cast [@MOUSEOVER,help][] Ring of Peace\n/cast Leg Sweep",
-		["'"]	= "s|Crackling Jade Lightning",
-		["#"] 	= "s|Touch of Death", -- Main rotation
+		BUTTON3	= "s|Grapple Weapon",
+		BUTTON4 = "",
+		BUTTON5 = "",
+		["#"] 	= "s|Healing Sphere",
+		[6]		= "",
+		[7]		= "s|Revival",
+		[8]		= "",
+		[9]		= "",
+
+		-- Keyboard based
+	},
+}
+
+local mistweaver = {
+	-- Keyboard based
+	G	= "s|Thunder Focus Tea",
+
+	shift 	= {
+		-- Mouse based
+
+		-- Keyboard based
+	},
+
+	alt = {
+		-- Mouse based
+		[7]		= "s|Mana Tea",
+
+		-- Keyboard based
+	},
+
+	ctrl 	= {
+		-- Mouse based
+
+		-- Keyboard based
+	},
+}
+
+local windwalker = {
+	-- Keyboard based
+	G		= "s|Tigereye Brew",
+
+	shift 	= {
+		-- Mouse based
+
+		-- Keyboard based
+	},
+
+	alt 	= {
+		-- Mouse based
+		[7]		= "s|Energizing Brew", 		-- Mana/Energy/Rage return
+
+		-- Keyboard based
+	},
+
+	ctrl 	= {
+		-- Mouse based
 
 		-- Keyboard based
 	},
@@ -60,66 +154,17 @@ local monkBase = {
 
 local brewmaster = {
 	-- Mouse based
-	BUTTON4	= "s|Dizzying Haze",
-	["#"] 	= "s|Blackout Kick",  	-- Main rotation
-	[8]		= "s|Guard",
 
 	-- Keyboard based
-	G		= "s|Elusive Brew",
 
 	shift 	= {
 		-- Mouse based
-		E = "m|/target Black Ox Statue\n/cast Provoke\n/targetlasttarget",	-- aoe taunt
 
 		-- Keyboard based
 	},
 
 	alt		= {
 		-- Mouse based
-		["'"]	= "s|Keg Smash",
-
-		-- Keyboard based
-	},
-}
-
-local mistweaver = {
-	-- Mouse based
-	[7]		= "s|Revival",	-- Raid cooldown
-
-	-- Keyboard based
-	G	= "s|Thunder Focus Tea",
-
-	shift 	= {
-		-- Mouse based
-		BUTTON5 = "m|/cast [@MOUSEOVER,help][] Surging Mist",
-		BUTTON4 = "s|Uplift",
-
-		-- Keyboard based
-
-	},
-
-	alt = {
-		-- Mouse based
-		[6]		= "s|Mana Tea",
-	},
-}
-
-local windwalker = {
-
-	-- Keyboard based
-	G		= "s|Tigereye Brew",
-
-	shift 	= {
-		-- Mouse based
-		["#"] = "s|Fists of Fury",	 -- Main rotation
-
-		-- Keyboard based
-	},
-
-	alt 	= {
-		-- Mouse based
-		["#"] 	= "s|Rising Sun Kick", 		-- Main rotation
-		[6]		= "s|Energizing Brew", 		-- Mana/Energy/Rage return
 
 		-- Keyboard based
 	},
