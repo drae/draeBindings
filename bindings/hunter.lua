@@ -33,15 +33,20 @@ local _, bindings = ...
 		\						- Redemption/Mass Ressurection
 --]]
 
+		--Widow Venom
+--	[6] 	= "m|/cast [@mouseover,exists,help] Misdirection;[@focus,exists,help] Misdirection;[@pet,exists,nodead] Misdirection",
+
+
 local hunterBase = {
 	-- Mouse based
 	BUTTON3	= "m|/stopcasting\n/cast Counter Shot", 					-- Talent
-	BUTTON5 = "s|Serpent Sting",
-	["'"] 	= "s|Arcane Shot",
-	["#"] 	= "m|/cast [@target,exists] Cobra Shot",
-	[5] 	= "m|/stopcasting\n/cast Feign Death",
-	[6] 	= "m|/cast [@mouseover,exists,help] Misdirection;[@focus,exists,help] Misdirection;[@pet,exists,nodead] Misdirection",
+	BUTTON4 = "s|Serpent Sting",
+	BUTTON5 = "s|Arcane Shot",
+	["#"] 	= "",
+
+	[6] 	= "m|/stopcasting\n/cast Feign Death",
 	[7] 	= "m|/cast [modifier] Revive Pet; [@pet,dead] Revive Pet; [pet] Mend Pet",
+	[8]		= "",
 	[9]		= "m|/cast Glaive Toss\n/cast Powershot\n/cast Barrage",
 
 	-- Keyboard based
@@ -54,7 +59,12 @@ local hunterBase = {
 
 	shift = {
 		BUTTON3	= "m|/cast Wyvern Sting\n/cast Binding Shot\n/cast Intimidation",
-		BUTTON5	= "s|Widow Venom",
+		BUTTON4 = "",
+		BUTTON5	= "s|Cobra Shot",
+		["#"] 	= "m|/cast [@target,exists] Cobra Shot",
+
+
+
 		["'"]	= "s|Multi-shot",
 		["#"]	= "m|/stopcasting\n/cast Kill Shot",
 		[5] 	= "m|/cancelaura Deterrence\n/stopcasting\n/cast Deterrence",
@@ -65,7 +75,9 @@ local hunterBase = {
 		R 		= "m|/qc\n/use 14", -- Trinket Slot 2
 	},
 	alt = {
+		BUTTON3 = "",
 		BUTTON4	= "m|/stopcasting\n/cast [@target,exists] Tranquilizing Shot",
+		BUTTON5 = "",
 		["'"] 	= "s|Concussive Shot",
 		["#"]	= "s|Distracting Shot",
 		[5]		= "m|/stopcasting\n/cast Disengage",
@@ -86,18 +98,6 @@ local hunterBase = {
 	},
 }
 
-local beastmastery = {
-	BUTTON4 = "m|/stopcasting\n/qc 1\n/use 10\n/cast Bestial Wrath\n/cast Kill Command",
-	[8] 	= "s|Focus Fire",
-
-	shift = {
-		[4]	= "m|/cast [@mouseover,help][@target,help][@player][] Spirit Mend",
-	},
-	alt = {
-		[8] = "s|Intimidation",
-	},
-}
-
 local survival = {
 	[8] 	= "m|/use 10\n/cast Explosive Shot",
 
@@ -106,5 +106,12 @@ local survival = {
 	},
 }
 
+local beastmastery = {
+}
+
+local marksmanship = {
+}
+
 draeBindings:RegisterKeyBindings("Beast Mastery", bindings.base, hunterBase, beastmastery)
 draeBindings:RegisterKeyBindings("Survival", bindings.base, hunterBase, survival)
+raeBindings:RegisterKeyBindings("Marksmanship", bindings.base, hunterBase, marksmanship)
