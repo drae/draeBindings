@@ -114,4 +114,4 @@ local marksmanship = {
 
 draeBindings:RegisterKeyBindings("Beast Mastery", bindings.base, hunterBase, beastmastery)
 draeBindings:RegisterKeyBindings("Survival", bindings.base, hunterBase, survival)
-raeBindings:RegisterKeyBindings("Marksmanship", bindings.base, hunterBase, marksmanship)
+draeBindings:RegisterKeyBindings("Marksmanship", bindings.base, hunterBase, marksmanship)
