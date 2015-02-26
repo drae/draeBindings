@@ -19,11 +19,7 @@ local _, bindings = ...
 		ctrl-BUTTON5
 
 		C				Cleanse
-<<<<<<< HEAD
         V				Beacon of Light/Faith
-=======
-		V				Beacon of Light/Faith
->>>>>>> Latest updates
 
 		General setup
 		-------------
@@ -82,11 +78,7 @@ local palaBase = {
 
 	alt = {
 		-- Mouse based
-<<<<<<< HEAD
-		BUTTON3	= "m|/cast [talent:3/2] Repentance; [talent:3/3] Blinding Light",
-=======
 		BUTTON3	= "m|/cast [talent:2/2] Repentance; [talent:2/3] Blinding Light",
->>>>>>> Latest updates
 		[9]		= "m|/cast [talent:1/1] Speed of Light",
 	},
 
@@ -137,11 +129,7 @@ local retri = {
 
 local holy = {
 
-<<<<<<< HEAD
-	["`"] = "m|/use 12\n/use 13\n/cast Avenging Wrath",                   -- Avenging Wrath
-=======
 	["`"] = "m|/cast Avenging Wrath",                   -- Avenging Wrath /use 12\n/use 13\n
->>>>>>> Latest updates
 	["V"] = "m|/cast [@MOUSEOVER,help][@TARGET,help][] Beacon of Light",
 
 	shift = {
