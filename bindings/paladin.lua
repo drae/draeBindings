@@ -56,7 +56,7 @@ local palaBase = {
 	C		= "m|/cast [@MOUSEOVER,help][] Cleanse",                   -- Dispell
 	E		= "m|/stopcasting\n/cast Reckoning",                       -- Taunt
 	F		= "m|/stopcasting\n/cast Every Man for Himself",           -- Out of jail free card
-	R		= "m|/use 13",                                             -- Trinket Slot 1
+--	R		= "m|/use 13",                                             -- Trinket Slot 1
 	G		= "s|Holy Avenger",
 	["\\"]	= "m|/cast [@MOUSEOVER,dead][@TARGET,dead][] Redemption",  -- Redemption
 
@@ -73,7 +73,7 @@ local palaBase = {
 		[4]		= "m|/cast [@MOUSEOVER,help][] Hand of Sacrifice",
 		E		= "m|/stopcasting\n/cast [@FOCUS,exists,harm][] Hand of Reckoning",  -- Focus taunt
 		F		= "m|/use Healthstone",
-		R		= "m|/use 14",  -- Trinket Slot 2
+--		R		= "m|/use 14",  -- Trinket Slot 2
 	},
 
 	alt = {
@@ -112,7 +112,7 @@ local retri = {
 
 	-- Keyboard based
 	F     = "m|/stopcasting\n/cast Emancipate\n/cast Every Man for Himself",        -- Overwrite Every man for himself
-	["`"] = "m|/use 12\n/use 13\n/use Potion of Mogu Power\n/cast Avenging Wrath",  -- Avenging Wrath
+	["`"] = "m|/use Draenic Strength Potion\n/cast Avenging Wrath",  -- Avenging Wrath
 
 	shift = {
 		-- Mouse based
