@@ -19,7 +19,7 @@ local _, bindings = ...
 		ctrl-BUTTON5
 
 		C				Cleanse
-        V				Beacon of Light/Faith
+		V				Beacon of Light/Faith
 
 		General setup
 		-------------
@@ -47,10 +47,9 @@ local palaBase = {
 	BUTTON4 = "s|Judgment",                                                                                     -- Main rotation
 	BUTTON5 = "s|Crusader Strike",																				-- Main rotation
 	["#"]	= "s|Hammer of Wrath",                                                                              -- Main rotation
-	[6]     = "s|Divine Protection",     	                          											-- Damage Reduction 1
+	[6]     = "s|Divine Protection",	                          											-- Damage Reduction 1
 	[7]		= "m|/cast [@MOUSEOVER,help][@TARGET,help][@PLAYER] Sacred Shield",
 	[8]		= "m|/cast [@MOUSEOVER,help][@TARGET,help][@PLAYER] Word of Glory",                                 -- HoPo user
-	[9]		= "m|/cast [talent:6/1] Holy Prism; [talent:6/2] Light's Hammer; [talent:6/3] Execution Sentence",  -- Lvl 90 talent
 
 	-- Keyboard based
 	C		= "m|/cast [@MOUSEOVER,help][] Cleanse",                   -- Dispell
@@ -64,7 +63,7 @@ local palaBase = {
 		-- Mouse based
 		BUTTON3	= "s|Hammer of Justice",          -- Stun
 		[6]		= "s|Guardian of Ancient Kings",  -- Damage Reduction
-		[7]		= "s|Divine Shield",
+		[7]		= "m|/cast Divine Shield",
 
 		-- Keyboard based
 		[1]		= "m|/cast [@MOUSEOVER,help][] Hand of Protection",
@@ -91,12 +90,14 @@ local palaBase = {
 
 local prot = {
 	-- Mouse based
-
+	[9]		= "m|/cast [talent:6/1][@PLAYER] Holy Prism; [talent:6/2] Light's Hammer; [talent:6/3] Execution Sentence",  -- Lvl 90 talent
+    
 	shift = {
 		-- Mouse based
 		BUTTON4	= "s|Avenger's Shield",         -- Main rotation
 		BUTTON5 = "s|Hammer of the Righteous",  -- Main rotation
 		[8]     = "s|Shield of the Righteous",  -- HoPo user
+        ["#"] = "m|/castsequence !Seal of Righteousness, !Seal of Insight", -- Empowered Seals
 	},
 
 	alt = {
@@ -109,16 +110,18 @@ local prot = {
 
 local retri = {
 	-- Mouse based
+	[9]		= "m|/cast [talent:6/1] Holy Prism; [talent:6/2] Light's Hammer; [talent:6/3] Execution Sentence",  -- Lvl 90 talent
 
 	-- Keyboard based
 	F     = "m|/stopcasting\n/cast Emancipate\n/cast Every Man for Himself",        -- Overwrite Every man for himself
-	["`"] = "m|/use 12\n/use 13\n/use Potion of Mogu Power\n/cast Avenging Wrath",  -- Avenging Wrath
+	["`"] = "m|/use Draenic Strength Potion\n/cast Avenging Wrath",  -- Avenging Wrath
 
 	shift = {
 		-- Mouse based
 		BUTTON4	= "s|Exorcism",                  -- Main rotation
 		BUTTON5 = "s|Hammer of the Righteous",   -- Main rotation
 		[8]     = "s|Templar's Verdict",         -- HoPo user
+        ["#"]   = "s|Seraphim"
 	},
 
 	alt = {
@@ -128,6 +131,8 @@ local retri = {
 }
 
 local holy = {
+	-- Mouse based
+	[9]		= "m|/cast [talent:6/1] Holy Prism; [talent:6/2] Light's Hammer; [talent:6/3] Execution Sentence",  -- Lvl 90 talent
 
 	["`"] = "m|/cast Avenging Wrath",                   -- Avenging Wrath /use 12\n/use 13\n
 	["V"] = "m|/cast [@MOUSEOVER,help][@TARGET,help][] Beacon of Light",
