@@ -53,7 +53,7 @@ local palaBase = {
 
 	-- Keyboard based
 	C		= "m|/cast [@MOUSEOVER,help][] Cleanse",                   -- Dispell
-	E		= "m|/stopcasting\n/cast Reckoning",                       -- Taunt
+	E		= "m|/stopcasting\n/cast Hand of Reckoning",                       -- Taunt
 	F		= "m|/stopcasting\n/cast Every Man for Himself",           -- Out of jail free card
 --	R		= "m|/use 13",                                             -- Trinket Slot 1
 	G		= "s|Holy Avenger",
@@ -62,14 +62,13 @@ local palaBase = {
 	shift = {
 		-- Mouse based
 		BUTTON3	= "s|Hammer of Justice",          -- Stun
-		[6]		= "s|Guardian of Ancient Kings",  -- Damage Reduction
-		[7]		= "m|/cast Divine Shield",
+		[6]		= "m|/cast Divine Shield",
 
 		-- Keyboard based
-		[1]		= "m|/cast [@MOUSEOVER,help][] Hand of Protection",
-		[2]		= "m|/cast [@MOUSEOVER,help][] Hand of Freedom",
-		[3]		= "m|/cast [@MOUSEOVER,help][] Hand of Salvation",
-		[4]		= "m|/cast [@MOUSEOVER,help][] Hand of Sacrifice",
+		[1]		= "m|/cast [@MOUSEOVER,help][] Blessing of Protection",
+		[2]		= "m|/cast [@MOUSEOVER,help][] Blessing of Freedom",
+		[3]		= "m|/cast [@MOUSEOVER,help][] Blessing of Salvation",
+		[4]		= "m|/cast [@MOUSEOVER,help][] Blessing of Sacrifice",
 		E		= "m|/stopcasting\n/cast [@FOCUS,exists,harm][] Hand of Reckoning",  -- Focus taunt
 		F		= "m|/use Healthstone",
 --		R		= "m|/use 14",  -- Trinket Slot 2
@@ -132,6 +131,7 @@ local retri = {
 
 local holy = {
 	-- Mouse based
+	["#"]   = "s|Light of Dawn",                      -- HoPo user
 	[9]		= "m|/cast [talent:6/1] Holy Prism; [talent:6/2] Light's Hammer; [talent:6/3] Execution Sentence",  -- Lvl 90 talent
 
 	["`"] = "m|/cast Avenging Wrath",                   -- Avenging Wrath /use 12\n/use 13\n
@@ -139,9 +139,9 @@ local holy = {
 
 	shift = {
 		-- Mouse based
-		BUTTON4 = "m|/cast [@TARGET,harm][] Denounce",
+		BUTTON4	= "s|Consecration",
 		BUTTON5	= "m|/cast [@TARGET,harm][] Holy Shock",
-		[8]     = "s|Light of Dawn",                      -- HoPo user
+       ["#"] = "s|Tyr's Deliverance",
 
 		-- Keyboard based
 		["V"]   = "m|/cast [@MOUSEOVER,help][@TARGET,help][] Beacon of Faith",

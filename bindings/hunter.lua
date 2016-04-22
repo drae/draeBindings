@@ -93,7 +93,7 @@ local marksmanship = {
     BUTTON4 = "s|Aimed Shot",
 
     shift = {
-        BUTTON4 = "s|Chimaera Shot",
+        BUTTON4 = "m|/use 14\n/cast Chimaera Shot",
     },
 
     alt = {

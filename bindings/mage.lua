@@ -38,44 +38,39 @@ local base = {
 	-- Mouse binds
 	BUTTON3 = "m|/qc\n/stopcasting\n/cast [@target,harm][] Counterspell",
 
-	BUTTON4 = "m|/cast Nether Tempest\n/cast Living Bomb\n/cast Frost Bomb",
-	BUTTON5 = "m|/cast Presence of Mind\n/cast Scorch\n/cast Ice Floes", -- Cast on the move (Tier 1)
-
-	[5]		= "m|/cast Temporal Shield\n/cast Blazing Speed\n/cast Ice Barrier", -- Survivability (Tier 2)
-	[6]		= "m|/use Mana Gem", -- Replenishment
-
+	[6]		= "m|/cast Alter Time\n/cast Flameglow\n/cast Ice Barrier", -- Survivability (Tier 2)
+	[7]		= "m|/use Mana Gem", -- Replenishment
 	[8]		= "m|/cast Incanter's Ward\n/cast Rune of Power",
 	[9]		= "s|Blink", 			-- Escape/CC
+	
+--		['#']	= "m|/cast [@mouseover,help][] Ice Ward\n/cast Ring of Frost\n/cast Lockjaw",-- Escape/CC (Tier 3)
+	
 
 	-- Keyboard binds
 	F	= "m|/stopcasting\n/qc\n/cast Stoneform", -- Out of jail free card
 
 	G 	= "s|Mirror Image",
 	R	= "m|/qc\n/use 12",
-	C	= "m|/petattack [nomodifier,pet]",
 
 	shift = {
 		-- Mouse binds
 		BUTTON3 = "m|/stopcasting\n/cast Frost Nova",
-		BUTTON4 = "m|/cast [@mouseover,help][] Decurse",
 
-		[5] 	= "m|/stopcasting\n/cancelaura Ice Block\n/cast Ice Block",
-		[6]		= "s|Evocation", 	-- Replenishment
-		[9]		= "m|/cast [@mouseover,help][] Ice Ward\n/cast Ring of Frost\n/cast Lockjaw",-- Escape/CC (Tier 3)
+		[6] 	= "m|/stopcasting\n/cancelaura Ice Block\n/cast Ice Block",
+		[7]		= "s|Evocation", 	-- Replenishment
 
 		-- Keyboard binds
 		F		= "m|/use Healthstone\n/use Lifeblood",	-- Out of jail free card
 		R		= "m|/qc\n/use 13",
-		C		= "m|/petpassive\n/petfollow\n/petassist",
+		C 		= "m|/cast [@mouseover,help][] Decurse",
 	},
 
 	alt	= {
 		-- Mouse binds
 		BUTTON3 = "m|/qc\n/cast [combat] Presence of Mind\n/cast [@focus,harm][@target,harm][] Polymorph(Turtle)",
-		BUTTON5	= "s|Flamestrike",
-		["#"]	= "s|Arcane Explosion",
-		[5]		= "m|/cancelaura Invisibility\n/cast Invisibility",
-		[6]		= "m|/qc\n/cast Presence of Mind\n/cast Conjure Mana Gem",
+		
+		[6]		= "m|/cancelaura Invisibility\n/cast Invisibility",
+		[7]		= "m|/qc\n/cast Presence of Mind\n/cast Conjure Mana Gem",
 
 		-- Keyboard binds
 		F	= "s|Slow Fall",
@@ -84,42 +79,68 @@ local base = {
 
 	ctrl = {
 		BUTTON3 = "m|/stopcasting\n/cast Spellsteal",
+		BUTTON4 = "m|/cast Nether Tempest\n/cast Living Bomb\n/cast Frost Bomb",
+		BUTTON5 = "m|/cast Presence of Mind\n/cast Scorch\n/cast Ice Floes", -- Cast on the move (Tier 1)
 	}
 }
 
 local arcane = {
 	-- Mouse binds
-	["'"]	= "s|Arcane Blast",
+	BUTTON5	= "s|Arcane Blast",
 
 	-- Keyboard binds
 	["`"]	= "m|/qc 4\n/cast Arcane Power\n/use 13\n/cast Lifeblood\n/cast Alter Time",	-- Suggested macro
 
 	shift 	= {
 		-- Mouse binds
-		["'"]	= "m|/cast [nochanneling:Arcane Missiles] Arcane Missiles",
+		BUTTON5	= "m|/cast [nochanneling:Arcane Missiles] Arcane Missiles",
+		["#"]	= "s|Arcane Explosion",
 	},
 
 	alt = {
-		["'"]	= "s|Arcane Barrage",
+		BUTTON5	= "s|Arcane Barrage",
 
 		-- Keyboard binds
 		["`"]	= "m|/use Potion of the Jade Serpent\n/cast Arcane Power\n/use 13\n/cast Lifeblood\n/cast Alter Time",	-- Suggested macro
 	}
 }
 
+--[[
+	
+	Rotation (ST):
+		
+	Ice Barrier
+	Ice Ward
+	
+	Pyroblast when instant
+	Inferno blast when heating up procs
+	Fireball
+	
+	Rotation (AoE):
+	
+	Build ignite (e.g. 2 * Fireball/Pyroblast if instant)
+	Combustion
+	Inferno Blast
+	
+	Nova/Dragons Breath -> Flamestrike/Blizzard
+	
+]]
 local fire = {
 	-- Mouse binds
-	["'"]	= "s|Fireball",
-	["#"]	= "s|Pyroblast",
+	BUTTON4	= "s|Combustion",
+	BUTTON5 = "s|Fireball",
+	
+	-- Keyboard binds
+	["`"]	= "m|/cancelaura Alter Time\n/use 13\n/cast Lifeblood\n/cast Presence of Mind\n/cast Alter Time",	-- Suggested macro
 
 	shift 	= {
 		-- Mouse binds
-		["'"]	= "m|/stopcasting\n/cast Inferno Blast",
-		["#"]	= "s|Combustion",
+		BUTTON5	= "s|Pyroblast",
 	},
-
-	-- Keyboard binds
-	["`"]	= "m|/cancelaura Alter Time\n/use Potion of the Jade Serpent\n/use 13\n/cast Lifeblood\n/cast Presence of Mind\n/cast Alter Time\n/cast Pyroblast",	-- Suggested macro
+	
+	alt = {
+		BUTTON5 = "m|/stopcasting\n/cast Inferno Blast",
+	},
 }
 
 --[[
@@ -135,25 +156,24 @@ local fire = {
 --]]
 local frost = {
 	-- Mouse binds
-	["'"]	= "s|Frostbolt",
-	["#"]	= "s|Frostfire Bolt",
+	BUTTON5	= "s|Frostbolt",
+	["#"]	= "s|Frozen Orb",
 
 	-- Keyboard binds
-	["`"]	= "m|/use Potion of the Jade Serpent\n/qc 2\n/use 12\n/use 13\n/cast Icy Veins\n/cast Alter Time",	-- Suggested macro
+	["`"]	= "s|Alter Time",	-- Suggested macro
 
 	shift 	= {
 		BUTTON3 = "m|/cast Frost Nova\n/cast [pet] Freeze",
+		BUTTON5	= "s|Frostfire Bolt",
+		["#"]	= "s|Cone of Cold",
 
 		-- Mouse binds
-		["'"]	= "s|Ice Lance",
-		["#"]	= "s|Frozen Orb",
 	},
 
 	alt = {
 		-- Mouse binds
-		["'"]	= "s|Cone of Cold",
-		["#"]	= "s|Deep Freeze",
-
+		BUTTON5	= "s|Ice Lance",
+	
 		-- Keyboard binds
 	}
 }

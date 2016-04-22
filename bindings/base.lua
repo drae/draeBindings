@@ -12,7 +12,7 @@ bindings.base = {
 
 	shift = {
 		["\\"]	= "m|/clearfocus [@mouseover,noexists][noexists]\n/focus [@mouseover,exists][exists]",
-		M		= "m|/run C_MountJournal.Summon(0)",
+		M		= "m|/run if (not IsMounted()) then C_MountJournal.SummonByID(0) else Dismount() end",
 	},
 
 	alt = {
