@@ -17,10 +17,8 @@ local _, bindings = ...
         BUTTON3					- Interrupts/Stuns/CC
 
         5 						- all defensive cooldowns, camoflage
-        6						- Misdirect
         7						- Revive Pet/Mend Pet
 
-        8 		 				- All HoPo uses
         9						- Misc / Talents
 
         C						- Pet attack, follow, revive, etc.
@@ -33,19 +31,12 @@ local _, bindings = ...
         \						- Redemption/Mass Ressurection
 --]]
 
-        --Widow Venom
---	[6] 	= "m|/cast [@mouseover,exists,help] Misdirection;[@focus,exists,help] Misdirection;[@pet,exists,nodead] Misdirection",
-
-
 local hunterBase = {
     -- Mouse based
     BUTTON3	= "m|/stopcasting\n/cast Counter Shot", 					-- Talent
-    ["#"]	= "m|/stopcasting\n/cast Kill Shot",
 
     [6] 	= "m|/stopcasting\n/cast Feign Death",
     [7] 	= "m|/cast [modifier] Revive Pet; [@pet,dead] Revive Pet; [pet] Mend Pet",
-    [8]		= "s|Dire Beast",
-    [9]		= "m|/cast Glaive Toss\n/cast Powershot\n/cast Barrage",
 
     -- Keyboard based
     C 		= "m|/petattack [nomodifier,pet]",
@@ -55,10 +46,8 @@ local hunterBase = {
 
     shift = {
         BUTTON3	= "m|/cast Wyvern Sting\n/cast Binding Shot\n/cast Intimidation",
-        BUTTON5	= "s|Multi-shot",
         ["#"]	= "m|/cast [@mouseover,exists,help] Misdirection;[@focus,exists,help] Misdirection;[@pet,exists,nodead] Misdirection",
         [6] 	= "m|/cancelaura Deterrence\n/stopcasting\n/cast Deterrence",
-        [8]		= "m|/cast A Murder of Crows\n/cast Stampede",
 
         C		= "m|/petfollow [pet]",
         T 		= "s|Explosive Trap",
@@ -66,9 +55,7 @@ local hunterBase = {
     },
 
     alt = {
-        BUTTON4	= "m|/stopcasting\n/cast [@target,exists] Tranquilizing Shot",
         BUTTON5 = "s|Concussive Shot",
-        ["#"]	= "s|Distracting Shot",
         [6]		= "m|/stopcasting\n/cast Disengage",
 
         T 		= "s|Ice Trap",
@@ -86,18 +73,25 @@ local survival = {
 }
 
 local beastmastery = {
+    ["#"]	= "m|/stopcasting\n/cast Kill Shot",
+
+    ctrl = {
+        C		= "m|/stopcasting\n/cast [@mouseover,help] Master's Call; [@player] Master's Call",
+    },
 }
 
 local marksmanship = {
-    BUTTON5 = "s|Steady Shot",
-    BUTTON4 = "s|Aimed Shot",
+    BUTTON4 = "s|Sidewinders",
+    BUTTON5 = "s|Aimed Shot",
+    ["#"]   = "m|/cast [talent:6/1]A Murder of Crows; [talent:6/2] Barrage; [talent:6/3] Volley",
 
     shift = {
-        BUTTON4 = "m|/use 14\n/cast Chimaera Shot",
+        BUTTON4 = "s|Marked Shot",
+        BUTTON5 = "s|Black Arrow",
     },
 
     alt = {
-
+        BUTTON5 = "s|Windburst",
     },
 }
 

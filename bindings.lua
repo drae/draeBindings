@@ -208,6 +208,8 @@ function _NS:LoadBindings(name)
 end
 
 _NS:SetScript('OnEvent', function(self, event, ...)
+    if self[event] == nil then return end
+
 	return self[event](self, event, ...)
 end)
 

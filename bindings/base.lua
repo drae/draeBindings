@@ -16,7 +16,6 @@ bindings.base = {
 	},
 
 	alt = {
-		["\\"]  = "s|Mass Resurrection",
 		Z 		= "m|/hideui",
 	},
 

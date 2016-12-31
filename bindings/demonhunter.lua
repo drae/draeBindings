@@ -1,4 +1,4 @@
-if (select(2, UnitClass"player") ~= "PALADIN") then return end
+if (select(2, UnitClass"player") ~= "DEMONHUNTER") then return end
 
 local _, bindings = ...
 
@@ -35,7 +35,7 @@ local _, bindings = ...
 		\                       Redemption/Mass Ressurection
 --]]
 
-local palaBase = {
+local demonhunterBase = {
 	-- Mouse based
 	BUTTON4 = "s|Judgment",                                                                                     -- Main rotation
 	BUTTON5 = "s|Crusader Strike",																				-- Main rotation
@@ -43,9 +43,10 @@ local palaBase = {
     
 	-- Keyboard based
 	["`"]   = "s|Avenging Wrath",  -- Avenging Wrath
-	C		= "m|/cast [@MOUSEOVER,help][] Cleanse\n/cast [@MOUSEOVER,help][] Cleanse Toxins",                   -- Dispell
+	C		= "m|/cast [@MOUSEOVER,help][] Cleanse",                   -- Dispell
 	E		= "m|/stopcasting\n/cast Hand of Reckoning",                       -- Taunt
 	F		= "m|/stopcasting\n/cast Every Man for Himself",           -- Out of jail free card
+	R		= "m|/use 13",                                             -- Trinket Slot 1
 	["\\"]	= "m|/cast [@MOUSEOVER,dead][@TARGET,dead][] Redemption",  -- Redemption
 
 	shift = {
@@ -57,8 +58,10 @@ local palaBase = {
 		[2]		= "m|/cast [@MOUSEOVER,help][] Blessing of Freedom",
 		[3]		= "m|/cast [@MOUSEOVER,help][] Blessing of Salvation",
 		[4]		= "m|/cast [@MOUSEOVER,help][] Blessing of Sacrifice",
+		[5]		= "m|/cast [@MOUSEOVER,help][] Blessing of Spellwarding",
 		E		= "m|/stopcasting\n/cast [@FOCUS,exists,harm][] Hand of Reckoning",  -- Focus taunt
 		F		= "m|/use Healthstone",
+		R		= "m|/use 14",  -- Trinket Slot 2
 	},
 
 	alt = {
@@ -74,12 +77,10 @@ local palaBase = {
 
 }
 
-local prot = {
+local vengeance = {
    	BUTTON3 = "m|/stopcasting\n/cast [@FOCUS,exists,harm][] Rebuke", 
 	["#"]   = "s|Shield of the Righteous",  
-    [6]     = "s|Eye of Tyr",
-
-	[1]		= "m|/cast [talent:4/1, @PLAYER] Blessing of Spellwarding",
+    [6]     = "s|Bastion of Light",
 
 	shift = {
 		-- Mouse based
@@ -92,65 +93,28 @@ local prot = {
 	alt = {
 		-- Mouse based
 		[6]     = "s|Ardent Defender",  -- Damage Reduction 3
-		["#"]	= "s|Bastion of Light",
 	},
 }
 
-local retri = {
+local havoc = {
 	-- Mouse based
 	BUTTON3 = "m|/stopcasting\n/cast [@FOCUS,exists,harm][] Rebuke", 
-	[6]     = "s|Shield of Vengeance",
-    [8]		= "s|Templar's Verdict",	-- HoPo spender (3*)
-	[9]		= "m|/cast [talent:1/2][] Execution Sentence",  -- Lvl 90 talent
-    ["#"]   = "s|Wake of Ashes",
-
-	-- Keyboard based
-	["`"] = "m|/cast Avenging Wrath",
-
-	shift = {
-		-- Mouse based
-		BUTTON4	= "s|Consecration",
-        BUTTON5 = "s|Blade of Justice",
-	    [8]		= "m|/cast [talent:5/1] Justicar's Vengeance; [talent:5/2] Eye for an Eye; [talent:5/3, @PLAYER] Word of Glory",	-- HoPo spender (5*)
-	},
-
-	alt = {
-		-- Mouse based
-	    [8]		= "s|Divine Storm",	-- HoPo spender (3*)
-	},
-}
-
-local holy = {
-	-- Mouse based
-	["#"]   = "s|Light of Dawn",                      
 	[6]     = "s|Divine Protection",
-    [9]     = "m|/cast [talent:5/2] Holy Avenger; [talent:5/3] Holy Prism",  -- Lvl 90 talent
-
-	["`"] = "m|/cast Avenging Wrath",
+	[9]		= "m|/cast [talent:1/2][@PLAYER] Execution Sentence",  -- Lvl 90 talent
+    
+	-- Keyboard based
 
 	shift = {
 		-- Mouse based
 		BUTTON4	= "s|Consecration",
-		BUTTON5	= "m|/cast [@TARGET,harm][] Holy Shock",
-        ["#"]   = "m|/cast [talent:1/2, @CURSOR] Light's Hammer", -- Talent row 1
-        [7]     = "s|Aura Mastery",
-
-		-- Keyboard based
+		[8]     = "s|Templar's Verdict",         
 	},
 
 	alt = {
 		-- Mouse based
-        ["#"] = "s|Tyr's Deliverance",
-
-        -- Keyboard        
-		["\\"]  = "s|Absolution",
+		BUTTON4	= "s|Divine Storm",  -- Main rotation
 	},
-
-	ctrl = {
-		["#"] = "s|Rule of Law"
-	}
 }
 
-draeBindings:RegisterKeyBindings("Protection", bindings.base, palaBase, prot)
-draeBindings:RegisterKeyBindings("Retribution", bindings.base, palaBase, retri)
-draeBindings:RegisterKeyBindings("Holy", bindings.base, palaBase, holy)
+draeBindings:RegisterKeyBindings("Vengeance", bindings.base, demonhunterBase, vengeance)
+draeBindings:RegisterKeyBindings("Havoc", bindings.base, demonhunterBase, havoc)
