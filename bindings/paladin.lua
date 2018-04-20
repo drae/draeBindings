@@ -46,6 +46,7 @@ local palaBase = {
 	C		= "m|/cast [@MOUSEOVER,help][] Cleanse\n/cast [@MOUSEOVER,help][] Cleanse Toxins",                   -- Dispell
 	E		= "m|/stopcasting\n/cast Hand of Reckoning",                       -- Taunt
 	F		= "m|/stopcasting\n/cast Every Man for Himself",           -- Out of jail free card
+	R		= "m|/use 13",
 	["\\"]	= "m|/cast [@MOUSEOVER,dead][@TARGET,dead][] Redemption",  -- Redemption
 
 	shift = {
@@ -59,6 +60,7 @@ local palaBase = {
 		[4]		= "m|/cast [@MOUSEOVER,help][] Blessing of Sacrifice",
 		E		= "m|/stopcasting\n/cast [@FOCUS,exists,harm][] Hand of Reckoning",  -- Focus taunt
 		F		= "m|/use Healthstone",
+		R		= "m|/use 14",
 	},
 
 	alt = {

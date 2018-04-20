@@ -24,37 +24,81 @@ local druidBase = {
 
 	alt = {
 		-- Mouse
-		[6]		= "s|Innervate",
 
 		-- Keyboard
 	},
 
 	ctrl = {
-		["\\"]	= "m|/cast Nature's Swiftness\n/cast [@MOUSEOVER,help][] Rebirth",
+		["\\"]	= "m|/cast [@MOUSEOVER,help,dead][] Rebirth",
 	}
 }
 
 local balance = {
 	-- Mouse
-	["'"] 	= "s|Wrath",
+
+	shift = {
+		-- Mouse
+
+		-- Keyboard
+	},
+
+	alt = {
+
+	-- Keyboard
+	},
+
+	ctrl = {
+
+
+	}
 }
 
 local feral = {
+	-- Mouse
+
+	shift = {
+		-- Mouse
+
+		-- Keyboard
+	},
+
+	alt = {
+
+	-- Keyboard
+	},
+
+	ctrl = {
+
+
+	}
 }
 
 local guardian = {
+	-- Mouse
+
+	shift = {
+		-- Mouse
+
+		-- Keyboard
+	},
+
+	alt = {
+
+	-- Keyboard
+	},
+
+	ctrl = {
+
+
+	}
 }
 
 local restoration = {
 	-- Mouse
-	["'"] 	= "s|Wrath",
-
-	-- Keyboard
-	["`"] 	= "m|/use 12\n/use 13\n/cast Nature's Vigil\n/cast Incarnation",
-
 
 	shift = {
 		-- Mouse
+		["#"]	= "m|/cast [@CURSOR] Effloresence",
 
 		-- Keyboard
 	},

@@ -34,64 +34,88 @@ local _, bindings = ...
 local hunterBase = {
     -- Mouse based
     BUTTON3	= "m|/stopcasting\n/cast Counter Shot", 					-- Talent
-
     [6] 	= "m|/stopcasting\n/cast Feign Death",
     [7] 	= "m|/cast [modifier] Revive Pet; [@pet,dead] Revive Pet; [pet] Mend Pet",
+    ["#"]   = "m|/cast [talent:6/1] A Murder of Crows; [talent:6/2] Barrage",
 
     -- Keyboard based
     C 		= "m|/petattack [nomodifier,pet]",
-    E 		= "s|Taunt",  -- Pet
-    R 		= "m|/qc\n/use 13", -- Trinket Slot 1
+    R 		= "m|/q 0\n/use 13\n/q 1", -- Trinket Slot 1
     T 		= "m|/cast Freezing Trap",
 
     shift = {
-        BUTTON3	= "m|/cast Wyvern Sting\n/cast Binding Shot\n/cast Intimidation",
-        ["#"]	= "m|/cast [@mouseover,exists,help] Misdirection;[@focus,exists,help] Misdirection;[@pet,exists,nodead] Misdirection",
-        [6] 	= "m|/cancelaura Deterrence\n/stopcasting\n/cast Deterrence",
-
+        ["#"]	= "m|/cast [@focus,exists,help] Misdirection;[@pet,exists,nodead] Misdirection",
+        [6] 	= "m|/cancelaura Aspect of the Turtle\n/stopcasting\n/cast Aspect of the Turtle",
+        [9]     = "s|Aspect of the Cheetah",
+        
         C		= "m|/petfollow [pet]",
-        T 		= "s|Explosive Trap",
-        R 		= "m|/qc\n/use 14", -- Trinket Slot 2
+        T 		= "s|Tar Trap",
+        R 		= "m|/q 0\n/use 14\n/q 1", -- Trinket Slot 2
     },
 
     alt = {
-        BUTTON5 = "s|Concussive Shot",
+        BUTTON5 = "m|/cast [@FOCUS,exists,harm][] Concussive Shot",
         [6]		= "m|/stopcasting\n/cast Disengage",
 
-        T 		= "s|Ice Trap",
-        E 		= "m|/cast [@mouseover,help][@target,help][] Intervene", 	-- Pet
+        -- Keyboard
+        ["\\"]  = "s|Heart of the Phoenix",
     },
 
     ctrl = {
-        [6] 	= "s|Camouflage",
-
-        C		= "m|/stopcasting\n/cast [@mouseover,help] Master's Call; [@player] Master's Call",
+        [6] 	= "s|Exhilaration",
     },
 }
 
 local survival = {
+    -- Mouse based
+
+    -- Keyboard based
+    C           = "m|/stopcasting\n/cast [@mouseover,help] Master's Call; [@player] Master's Call",
+
+    alt = {
+        -- Mouse based
+
+        -- Keyboard based
+        T 		= "s|Explosive Trap",
+    }
 }
 
 local beastmastery = {
-    ["#"]	= "m|/stopcasting\n/cast Kill Shot",
+    BUTTON4 = "m|/q 0\n/cast Titan's Thunder\n/q 1\n/cast Dire Beast",
+    BUTTON5 = "s|Cobra Shot",
 
-    ctrl = {
-        C		= "m|/stopcasting\n/cast [@mouseover,help] Master's Call; [@player] Master's Call",
-    },
-}
-
-local marksmanship = {
-    BUTTON4 = "s|Sidewinders",
-    BUTTON5 = "s|Aimed Shot",
-    ["#"]   = "m|/cast [talent:6/1]A Murder of Crows; [talent:6/2] Barrage; [talent:6/3] Volley",
+    ["`"] = "m|/q 0\n/cast Aspect of the Wild\n/use 13\n/q 1\n/cast Bestial Wrath",    
 
     shift = {
-        BUTTON4 = "s|Marked Shot",
-        BUTTON5 = "s|Black Arrow",
+        BUTTON3	= "m|/cast [talent:5/1,@CURSOR] Binding Shot\n/cast [talent:5/2] Wyvern Sting\n/cast [talent:5/3] Intimidation",
+        BUTTON4 = "s|Multi-Shot",
+        BUTTON5 = "s|Kill Command",
+
+        ["`"] = "s|Stampede",    
     },
 
     alt = {
-        BUTTON5 = "s|Windburst",
+        BUTTON4 = "s|Titan's Thunder",
+    }
+}
+
+local marksmanship = {
+    BUTTON4 = "s|Aimed Shot",
+    BUTTON5 = "s|Arcane Shot",
+    [8]     = "m|/cast [talent:7/2] Piercing Shot",
+
+    ["`"] = "m|/q 0\n/cast Aspect of the Wild\n/use 13\n/q 1\n/cast Trueshot",    
+    
+    shift = {
+        BUTTON3	= "m|/cast [talent:5/1,@CURSOR] Binding Shot\n/cast [talent:5/2] Wyvern Sting\n/cast [talent:5/3] Camouflage",
+        BUTTON4 = "s|Multi-Shot",
+        BUTTON5 = "s|Marked Shot",
+    },
+
+    alt = {
+        BUTTON3 = "s|Bursting Shot",
+        BUTTON4 = "s|Windburst",
+        ["#"] = "m|/cast [talent:4/1,@CURSOR] Explosive Shot",
     },
 }
 

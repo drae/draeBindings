@@ -42,9 +42,8 @@ local _, bindings = ...
 
 local monkBase = {
 	-- Mouse based
-	BUTTON3	= "m|/stopcasting\n/cast Spear Hand Strike",				-- Interrupt
+	BUTTON3	= "m|/stopcasting\n/cast Leg Sweep",				-- Interrupt
 	BUTTON4 = "s|Blackout Kick", 										-- Main Rotation
-	BUTTON5 = "s|Jab",													-- Main Rotation
 	["#"] 	= "m|/cast !Spinning Crane Kick\n/cast !Rushing Jade Wind",	-- Main rotation - AoE
 	[6]		= "m|/cast Dampen Harm\n/cast Diffuse Magic", 				-- Damage reduction (<3 min)
 	[7]		= "",
@@ -55,16 +54,12 @@ local monkBase = {
 	C		= "m|/cast [@MOUSEOVER][] Detox", 								-- Dispell
 	E 		= "s|Provoke",													-- Taunt
 	R		= "m|/use 12",													-- Trinket 1
-	F		= "s|Nimble Brew",												-- Get out of jail free card
 	["\\"] 	= "m|/cast [@MOUSEOVER,dead][@TARGET,dead][] Resuscitate",		-- Res
 	["`"] 	= "m|/cast Tigereye Brew\n/cast Invoke Xuen, the White Tiger",	-- "Major" cooldown
 
 	shift 	= {
 		-- Mouse based
 		BUTTON3	= "m|/cast [@MOUSEOVER,help][] Ring of Peace\n/cast Leg Sweep",
-		BUTTON4 = "s|Rising Sun Kick",
-		BUTTON5 = "s|Tiger Palm",
-		["#"] 	= "s|Fists of Fury",	 -- Main rotation
 		[6]		= "s|Fortifying Brew", 							-- Damage Reduction (>= 3min)
 		[7]		= "s|Zen Meditation",							-- Kinda like bubble ... but not really ...
 		[8]		= "m|/cast [@MOUSEOVER,help][] Chi Wave\n/cast [@MOUSEOVER,help][] Zen Sphere\n/cast Chi Burst",
@@ -129,18 +124,25 @@ local mistweaver = {
 }
 
 local windwalker = {
+	BUTTON4 = "s|Rising Sun Kick", 										-- Main Rotation
+	BUTTON5 = "s|Tiger Palm",													-- Main Rotation
+
 	-- Keyboard based
 	G		= "s|Tigereye Brew",
 
 	shift 	= {
 		-- Mouse based
+		BUTTON4 = "s|Blackout Kick", 										-- Main Rotation
+		BUTTON5 = "s|Strike of the Windlord",													-- Main Rotation
+		["#"]	= "s|Fists of Fury",
 
 		-- Keyboard based
 	},
 
 	alt 	= {
 		-- Mouse based
-		[7]		= "s|Energizing Brew", 		-- Mana/Energy/Rage return
+		BUTTON4 = "s|Tiger Palm", 										-- Main Rotation
+		BUTTON5 = "s|Rising Sun Kick",													-- Main Rotation
 
 		-- Keyboard based
 	},

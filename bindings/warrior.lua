@@ -4,23 +4,23 @@ local _, bindings = ...
 
 local warriorBase = {
 	BUTTON3 = "s|Pummel", -- Interrupt
-	BUTTON4	= "s|Victory Rush",
+	[9] 	= "s|Charge",
 
 	-- Mouse top three buttons
-	[5] 	= "s|Shield Wall", -- Damage Reduction 1
-	[6]		= "s|Charge",
+	[7]		= "s|Battle Cry",
 
 	-- Keyboard only
-	E 		= "m|/stopcasting\n/cast [nostance:2] Defensive Stance; [stance:2, target=mouseover, exists, harm][stance:2, nodead, harm][stance:2, target=targettarget, nodead, harm][stance:2] Taunt",
-	F 		= "m|/stopcasting\n/qc\n/cast Stoneform",
+	C 		= "m|/stopcasting\n/qc\n/cast Shadowmeld",
+	E		= "s|Taunt",
+	F		= "s|Berserker Rage",
 	R		= "m|/qc\n/use 13", -- Trinket Slot 1
 
 	shift = {
-		BUTTON5 = "s|Slam",
+		BUTTON4	= "s|Victory Rush",
+		[9]		= "m|/cast [@CURSOR] Heroic Leap",
+	},
 
-		[1]		= "s|Battle Stance",
-		[2]		= "s|Berserker Stance",
-		[3]		= "s|Defensive Stance",
+	alt = {
 	},
 
 	ctrl = {
@@ -28,17 +28,15 @@ local warriorBase = {
 }
 
 local arms = {
-	BUTTON5	= "s|Heroic Strike",
-	["'"]	= "s|Mortal Strike",
-	["#"]	= "s|Overpower", -- Main rotation
+	BUTTON4 = "s|Colossus Smash",
+	BUTTON5 = "s|Slam",
 
 	shift = {
-		["'"] = "s|Cleave",
+		BUTTON5	= "s|Mortal Strike",
 	},
 
 	alt = {
-		["#"] = "m|/cast [nomod,nostance:1] Battle Stance\n/cast Rend",
-		["'"]	= "s|Execute",
+		BUTTON5	= "s|Execute",
 	},
 }
 
@@ -46,6 +44,28 @@ local fury = {
 }
 
 local prot = {
+	BUTTON5 = "s|Devastate",
+	["#"]	= "s|Shield Slam",
+	[6]		= "s|Demoralizing Shout",
+
+	shift = {
+		BUTTON5 = "s|Revenge",
+		["#"] 	= "s|Shield Block",
+		[6]		= "s|Last Stand",
+	},
+
+	alt = {
+		BUTTON5 = "s|Thunder Clap",
+		["#"] 	= "s|Ignore Pain",
+		[6]		= "s|Shield Wall",
+		[9] 	= "s|Intercept",
+	},
+
+	ctrl = {
+		["#"]	= "s|Neltharion's Fury",
+		[6]		= "s|Spell Reflection",
+	},
+
 }
 
 draeBindings:RegisterKeyBindings("Arms", bindings.base, warriorBase, arms)
