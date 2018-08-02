@@ -6,9 +6,6 @@ local warriorBase = {
 	BUTTON3 = "s|Pummel", -- Interrupt
 	[9] 	= "s|Charge",
 
-	-- Mouse top three buttons
-	[7]		= "s|Battle Cry",
-
 	-- Keyboard only
 	C 		= "m|/stopcasting\n/qc\n/cast Shadowmeld",
 	E		= "s|Taunt",
@@ -16,7 +13,6 @@ local warriorBase = {
 	R		= "m|/qc\n/use 13", -- Trinket Slot 1
 
 	shift = {
-		BUTTON4	= "s|Victory Rush",
 		[9]		= "m|/cast [@CURSOR] Heroic Leap",
 	},
 
@@ -24,30 +20,57 @@ local warriorBase = {
 	},
 
 	ctrl = {
+		BUTTON4	= "s|Victory Rush",
 	},
 }
 
 local arms = {
-	BUTTON4 = "s|Colossus Smash",
+	BUTTON4 = "s|Overpower",
 	BUTTON5 = "s|Slam",
+	["#"] 	= "s|Whirlwind",
+	[6]		= "s|Die by the Sword",
+
+	["`"] 	= "s|Avatar",
 
 	shift = {
+		BUTTON4	= "s|Cleave",
 		BUTTON5	= "s|Mortal Strike",
+		["#"]	= "s|Bladestorm",
+		[6]		= "s|Rallying Cry",
 	},
 
 	alt = {
+		BUTTON4 = "s|Colossus Smash",
 		BUTTON5	= "s|Execute",
 	},
+
+	ctrl = {
+	}
 }
 
 local fury = {
+	BUTTON4 = "s|Raging Blow",
+	BUTTON5	= "s|Furious Slash",
+	["#"] = "s|Whirlwind",
+	["`"] = "s|Battle Cry",
+
+	shift = {
+		BUTTON4 = "s|Rampage",
+		BUTTON5 = "s|Bloodthirst"
+	},
+
+	alt = {
+		BUTTON5 = "s|Execute",
+	},
+
 }
 
 local prot = {
 	BUTTON5 = "s|Devastate",
 	["#"]	= "s|Shield Slam",
 	[6]		= "s|Demoralizing Shout",
-
+	[9]		= "s|Shockwave",
+	
 	shift = {
 		BUTTON5 = "s|Revenge",
 		["#"] 	= "s|Shield Block",
@@ -62,7 +85,6 @@ local prot = {
 	},
 
 	ctrl = {
-		["#"]	= "s|Neltharion's Fury",
 		[6]		= "s|Spell Reflection",
 	},
 

@@ -79,13 +79,12 @@ local palaBase = {
 local prot = {
    	BUTTON3 = "m|/stopcasting\n/cast [@FOCUS,exists,harm][] Rebuke", 
 	["#"]   = "s|Shield of the Righteous",  
-    [6]     = "s|Eye of Tyr",
 
-	[1]		= "m|/cast [talent:4/1, @PLAYER] Blessing of Spellwarding",
+	[1]		= "m|/cast [talent:4/3, @PLAYER] Blessing of Spellwarding",
 
 	shift = {
 		-- Mouse based
-		BUTTON4 = "s|Consecration",       -- Main rotation
+		BUTTON4 = "s|Consecration",       		-- Main rotation
 		BUTTON5 = "s|Avenger's Shield",         -- Main rotation
         ["#"]   = "s|Light of the Protector", 
     	[6]     = "s|Guardian of Ancient Kings",
@@ -94,8 +93,13 @@ local prot = {
 	alt = {
 		-- Mouse based
 		[6]     = "s|Ardent Defender",  -- Damage Reduction 3
-		["#"]	= "s|Bastion of Light",
+		["#"] 	= "m|/cast [talent:7/3] Seraphim",
 	},
+
+	ctrl = {
+		["#"]	= "m|/cast [talent:2/3] Bastion of Light",
+	}
+
 }
 
 local retri = {
@@ -103,7 +107,7 @@ local retri = {
 	BUTTON3 = "m|/stopcasting\n/cast [@FOCUS,exists,harm][] Rebuke", 
 	[6]     = "s|Shield of Vengeance",
     [8]		= "s|Templar's Verdict",	-- HoPo spender (3*)
-	[9]		= "m|/cast [talent:1/2][] Execution Sentence",  -- Lvl 90 talent
+	[9]		= "m|/cast [talent:1/3][] Execution Sentence",  -- Lvl 90 talent
     ["#"]   = "s|Wake of Ashes",
 
 	-- Keyboard based
@@ -113,7 +117,7 @@ local retri = {
 		-- Mouse based
 		BUTTON4	= "s|Consecration",
         BUTTON5 = "s|Blade of Justice",
-	    [8]		= "m|/cast [talent:5/1] Justicar's Vengeance; [talent:5/2] Eye for an Eye; [talent:5/3, @PLAYER] Word of Glory",	-- HoPo spender (5*)
+	    [8]		= "m|/cast [talent:6/2] Justicar's Vengeance; [talent:5/3] Eye for an Eye; [talent:6/3, @PLAYER] Word of Glory",	-- HoPo spender (5*)
 	},
 
 	alt = {
@@ -126,15 +130,15 @@ local holy = {
 	-- Mouse based
 	["#"]   = "s|Light of Dawn",                      
 	[6]     = "s|Divine Protection",
-    [9]     = "m|/cast [talent:5/2] Holy Avenger; [talent:5/3] Holy Prism",  -- Lvl 90 talent
+    [9]     = "m|/cast [talent:5/3] Holy Avenger; [talent:5/2] Holy Prism",  -- Lvl 90 talent
 
-	["`"] = "m|/cast Avenging Wrath",
+	["`"] 	= "m|/cast Avenging Wrath",
 
 	shift = {
 		-- Mouse based
 		BUTTON4	= "s|Consecration",
 		BUTTON5	= "m|/cast [@TARGET,harm][] Holy Shock",
-        ["#"]   = "m|/cast [talent:1/2, @CURSOR] Light's Hammer", -- Talent row 1
+        ["#"]   = "m|/cast [talent:1/3, @CURSOR] Light's Hammer", -- Talent row 1
         [7]     = "s|Aura Mastery",
 
 		-- Keyboard based
@@ -142,7 +146,6 @@ local holy = {
 
 	alt = {
 		-- Mouse based
-        ["#"] = "s|Tyr's Deliverance",
 
         -- Keyboard        
 		["\\"]  = "s|Absolution",

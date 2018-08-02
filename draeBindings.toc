@@ -1,9 +1,8 @@
-## Interface: 72000
+## Interface: 80000
 ## Title: draeBindings
 ## Author: Haste - modified by Drae
 ## Version: 1.0
 ## Notes: Binding management for mad people.
-## SavedVariablesPerCharacter: draeBindingsDB
 
 bindings.lua
 bindings\base.lua

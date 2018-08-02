@@ -36,7 +36,7 @@ local hunterBase = {
     BUTTON3	= "m|/stopcasting\n/cast Counter Shot", 					-- Talent
     [6] 	= "m|/stopcasting\n/cast Feign Death",
     [7] 	= "m|/cast [modifier] Revive Pet; [@pet,dead] Revive Pet; [pet] Mend Pet",
-    ["#"]   = "m|/cast [talent:6/1] A Murder of Crows; [talent:6/2] Barrage",
+    ["#"]   = "m|/cast [talent:1/3] A Murder of Crows; [talent:6/2] Barrage",
 
     -- Keyboard based
     C 		= "m|/petattack [nomodifier,pet]",
@@ -100,22 +100,24 @@ local beastmastery = {
 }
 
 local marksmanship = {
+    BUTTON5 = "s|Steady Shot",
     BUTTON4 = "s|Aimed Shot",
-    BUTTON5 = "s|Arcane Shot",
-    [8]     = "m|/cast [talent:7/2] Piercing Shot",
+    [8]     = "s|Rapid Fire",
 
-    ["`"] = "m|/q 0\n/cast Aspect of the Wild\n/use 13\n/q 1\n/cast Trueshot",    
+    ["`"]   = "m|/q 0\n/use 13\n/q 1\n/cast Trueshot",    
     
     shift = {
-        BUTTON3	= "m|/cast [talent:5/1,@CURSOR] Binding Shot\n/cast [talent:5/2] Wyvern Sting\n/cast [talent:5/3] Camouflage",
+        BUTTON3	= "m|/cast [talent:5/3,@CURSOR] Binding Shot\n/cast [talent:3/3] Camouflage",
         BUTTON4 = "s|Multi-Shot",
-        BUTTON5 = "s|Marked Shot",
+        BUTTON5 = "s|Arcane Shot",
+        [8]     = "m|/cast [talent:7/3] Piercing Shot",
     },
 
     alt = {
         BUTTON3 = "s|Bursting Shot",
-        BUTTON4 = "s|Windburst",
-        ["#"] = "m|/cast [talent:4/1,@CURSOR] Explosive Shot",
+        ["#"]   = "m|/cast [talent:4/1,@CURSOR] Explosive Shot",
+
+        ["C"]   = "s|Hunter's Mark",
     },
 }
 
