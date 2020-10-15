@@ -1,22 +1,29 @@
-if (select(2, UnitClass"player") ~= "MONK") then return end
+if (select(2, UnitClass 'player') ~= 'MONK') then return end
 
 local _, bindings = ...
 
 --[[
+		MOUSE3 = mousewheel click
+		MOUSE4 = rear left side button
+		MOUSE5 = front left side button
+		; = extra button on side
+		6 = first button on left mouse button edge
+		7 = second button on left mouse button edge
+		8 = tilt mousewheel left
+		9 = tilt mouseright right
+
 		Clique setup
 		------------
 
-		Mouseover healing (BUTTON4 at rear)
+		BUTTON5			"Instant" heal
+		shift-BUTTON5	Fast cast heal
+		alt-BUTTON5 	Slow cast heal
+		ctrl-BUTTON5	Heal improver
 
-		BUTTON4			Renewing Mist
-		shift-BUTTON4	Surging Mist
+		BUTTON4			Channeled heal
+		shift-BUTTON4
 		alt-BUTTON4
 		ctrl-BUTTON4
-
-		BUTTON5			Soothing Mist
-		shift-BUTTON5	Enveloping Mist
-		alt-BUTTON5		Uplift
-		ctrl-BUTTON5
 
 		C				Cleanse
 
@@ -24,160 +31,142 @@ local _, bindings = ...
 		-------------
 
 		-- Mouse
-		#, BUTTON4, BUTTON5		Primary rotation abilities / heals
+		;, BUTTON4, BUTTON5		Primary rotation abilities / heals
 		BUTTON3                 Interrupts/Stuns/CC
 		6                       Defensive cooldowns
-		7                       Misc / Sacred Shield / Divine Shield / Divine Plea
-		8                       All HoPo uses
-		9                       Misc / Talents
+		7                       Special cooldowns
+		8                       Class specials, e.g. hopo uses, etc.
+		9						Movement speed enhancers
 
 		-- Keyboard
 		E                       Taunts
 		F                       Get out of jail free -> Every man for himself, Emancipate, Healthstone
 		R                       Trinkets
-		G                       Cooldown
-		`                       Avenging Wrath and anything that should be tied to its use
+		G
+		`                       Major dmg/healing cooldown
 		\                       Redemption/Mass Ressurection
 --]]
 
 local monkBase = {
 	-- Mouse based
-	BUTTON3	= "m|/stopcasting\n/cast Leg Sweep",				-- Interrupt
-	BUTTON4 = "s|Blackout Kick", 										-- Main Rotation
-	["#"] 	= "m|/cast !Spinning Crane Kick\n/cast !Rushing Jade Wind",	-- Main rotation - AoE
-	[6]		= "m|/cast Dampen Harm\n/cast Diffuse Magic", 				-- Damage reduction (<3 min)
-	[7]		= "",
-	[8]		= "s|Uplift",
-	[9]		= "s|Roll",
+	BUTTON3 = 'm|/stopcasting\n/cast Leg Sweep',
+	BUTTON5 = 's|Tiger Palm',
+	[';'] 	= 'm|/cast !Spinning Crane Kick\n/cast !Rushing Jade Wind',
+	[9] 	= 's|Roll',
 
 	-- Keyboard based
-	C		= "m|/cast [@MOUSEOVER][] Detox", 								-- Dispell
-	E 		= "s|Provoke",													-- Taunt
-	R		= "m|/use 12",													-- Trinket 1
-	["\\"] 	= "m|/cast [@MOUSEOVER,dead][@TARGET,dead][] Resuscitate",		-- Res
-	["`"] 	= "m|/cast Tigereye Brew\n/cast Invoke Xuen, the White Tiger",	-- "Major" cooldown
+--	C 		= 'm|/cast [@MOUSEOVER,help][@PLAYER][] Detox',
+	E 		= 's|Provoke',
+	R 		= 'm|/use 12', -- Trinket 1
+	['\\'] 	= 'm|/cast [@MOUSEOVER,dead][@TARGET,dead][] Resuscitate',
 
-	shift 	= {
+	shift = {
 		-- Mouse based
-		BUTTON3	= "m|/cast [@MOUSEOVER,help][] Ring of Peace\n/cast Leg Sweep",
-		[6]		= "s|Fortifying Brew", 							-- Damage Reduction (>= 3min)
-		[7]		= "s|Zen Meditation",							-- Kinda like bubble ... but not really ...
-		[8]		= "m|/cast [@MOUSEOVER,help][] Chi Wave\n/cast [@MOUSEOVER,help][] Zen Sphere\n/cast Chi Burst",
-		[9] 	= "s|Flying Serpent Kick",
+		[6] 	= 'm|/cast Dampen Harm\n/cast Diffuse Magic',
+--		[8] 	= 'm|/cast [@MOUSEOVER,help][] Chi Wave\n/cast [@MOUSEOVER,help][] Zen Sphere\n/cast Chi Burst',
 
 		-- Keyboard based
-		R		= "m|/use 13",		-- Trinket 2 on use,
-		G		= "s|Chi Brew",
-	},
-
-	alt 	= {
-		-- Mouse based
-		BUTTON3 = "m|/stopcasting\n/cast [@FOCUS,harm][] Paralysis", 	-- Long term CC
-		BUTTON4 = "s|Expel Harm",
-		BUTTON5 = "s|Crackling Jade Lightning",
-		["#"]	= "s|Touch of Death",
-		[6] 	= "m|/cast Fortifying Brew\n/cast Touch of Karma", -- Damage Reduction (Other)
-		[7]		= "",
-		[8]		= "",
-		[9]		= "m|/cast [@MOUSEROVER,help][] Tiger's Lust",	-- Speed increase
-
-		-- Keyboard based
-	},
-
-	ctrl 	= {
-		-- Mouse based
-		BUTTON3	= "s|Grapple Weapon",
-		BUTTON4 = "",
-		BUTTON5 = "",
-		["#"] 	= "s|Healing Sphere",
-		[6]		= "",
-		[7]		= "s|Revival",
-		[8]		= "",
-		[9]		= "",
-
-		-- Keyboard based
-	},
-}
-
-local mistweaver = {
-	-- Keyboard based
-	G	= "s|Thunder Focus Tea",
-
-	shift 	= {
-		-- Mouse based
-
-		-- Keyboard based
+		[2] 	= "m|/cast [@MOUSEOVER,help][@PLAYER][] Tiger's Lust",
+		R 		= 'm|/use 13' -- Trinket 2 on use,
 	},
 
 	alt = {
 		-- Mouse based
-		[7]		= "s|Mana Tea",
+		BUTTON3 = 'm|/stopcasting\n/cast [@FOCUS,harm][] Paralysis',
+		[9] 	= 's|Transcendence: Transfer',
 
 		-- Keyboard based
 	},
 
-	ctrl 	= {
+	ctrl = {
 		-- Mouse based
+		BUTTON3 = 'm|/cast [@CURSOR] Ring of Peace\n/cast Song of Chi-Ji',
+		BUTTON4 = 'm|/use Heart Essence',
+		BUTTON5 = 's|Crackling Jade Lightning',
+		[9] 	= 's|Transcendence',
 
 		-- Keyboard based
+	}
+}
+
+local mistweaver = {
+	[6] 	= 's|Fortifying Brew',
+	[7]		= 's|Thunder Focus Tea',
+
+	-- Keyboard based
+	['`'] 	= 'm|/cast [@CURSOR][@PLAYER][] Summon Jade Serpent Statue\n/cast Invoke Chi-Ji, the Red Crane\n/cast Refreshing Jade Wind',
+
+	shift = {
+		BUTTON5 = 's|Blackout Kick',
+		[7] 	= 's|Mana Tea',
+		[';'] 	= 's|Essence Font',
 	},
+
+	alt = {
+		-- Mouse based
+		BUTTON5 = 's|Rising Sun Kick',
+--		[6] = 'm|/cast [@MOUSEOVER,help][] Life Cocoon',
+
+		-- Keyboard based
+		['\\'] = 's|Reawaken',
+	},
+
+	ctrl = {
+		[6] 	= 's|Revival',
+	}
 }
 
 local windwalker = {
-	BUTTON4 = "s|Rising Sun Kick", 										-- Main Rotation
-	BUTTON5 = "s|Tiger Palm",													-- Main Rotation
+	BUTTON4 = 's|Touch of Death',
+	[6] 	= 's|Touch of Karma',
 
 	-- Keyboard based
-	G		= "s|Tigereye Brew",
+	['`'] 	= 'm|/cast Tigereye Brew\n/cast Invoke Xuen, the White Tiger',
 
-	shift 	= {
+	shift = {
 		-- Mouse based
-		BUTTON4 = "s|Blackout Kick", 										-- Main Rotation
-		BUTTON5 = "s|Strike of the Windlord",													-- Main Rotation
-		["#"]	= "s|Fists of Fury",
+		BUTTON3 = 's|Spear Hand Strike',
+		BUTTON4 = 's|Fist of the White Tiger',
+		BUTTON5 = 's|Blackout Kick',
+		[';'] 	= 'm|/cast !Fists of Fury',
+		[9] 	= 's|Flying Serpent Kick',
 
 		-- Keyboard based
 	},
-
-	alt 	= {
+	alt = {
 		-- Mouse based
-		BUTTON4 = "s|Tiger Palm", 										-- Main Rotation
-		BUTTON5 = "s|Rising Sun Kick",													-- Main Rotation
+		BUTTON4 = 's|Storm, Earth, and Fire',
+		BUTTON5 = 's|Rising Sun Kick',
+		[';'] 	= 's|Chi Burst',
 
 		-- Keyboard based
 	},
-
-	ctrl 	= {
-		-- Mouse based
-
-		-- Keyboard based
-	},
+	ctrl = {
+		[";"]	= "s|Whirling Dragon Punch",
+	}
 }
 
 local brewmaster = {
 	-- Mouse based
-
+		[6] = "s|Ironskin Brew",
 	-- Keyboard based
 
-	shift 	= {
-		-- Mouse based
-
-		-- Keyboard based
+	shift = {
+		BUTTON3 = 's|Spear Hand Strike',
+		BUTTON4 = 's|Expel Harm',
+		BUTTON5 = 's|Blackout Strike',
+		[6] = "s|Purifying Brew",
 	},
 
-	alt		= {
-		-- Mouse based
-
-		-- Keyboard based
+	alt = {
+		BUTTON4 = 's|Breath of Fire',
+		BUTTON5 = 's|Keg Smash',
+		[6]	= 's|Fortifying Brew',
 	},
 
-	ctrl 	= {
-		-- Mouse based
-
-		-- Keyboard based
-	},
+	ctrl = {}
 }
 
-draeBindings:RegisterKeyBindings("Brewmaster", bindings.base, monkBase, brewmaster)
-draeBindings:RegisterKeyBindings("Mistweaver", bindings.base, monkBase, mistweaver)
-draeBindings:RegisterKeyBindings("Windwalker", bindings.base, monkBase, windwalker)
+draeBindings:RegisterKeyBindings('Brewmaster', bindings.base, monkBase, brewmaster)
+draeBindings:RegisterKeyBindings('Mistweaver', bindings.base, monkBase,	mistweaver)
+draeBindings:RegisterKeyBindings('Windwalker', bindings.base, monkBase, windwalker)

@@ -98,7 +98,7 @@ local restoration = {
 
 	shift = {
 		-- Mouse
-		["#"]	= "m|/cast [@CURSOR] Effloresence",
+		[";"]	= "m|/cast [@CURSOR] Effloresence",
 
 		-- Keyboard
 	},

@@ -79,14 +79,14 @@ local demonhunterBase = {
 
 local vengeance = {
    	BUTTON3 = "m|/stopcasting\n/cast [@FOCUS,exists,harm][] Rebuke", 
-	["#"]   = "s|Shield of the Righteous",  
+	[";"]   = "s|Shield of the Righteous",  
     [6]     = "s|Bastion of Light",
 
 	shift = {
 		-- Mouse based
 		BUTTON4 = "s|Consecration",       -- Main rotation
 		BUTTON5 = "s|Avenger's Shield",         -- Main rotation
-        ["#"]   = "s|Light of the Protector", 
+        [";"]   = "s|Light of the Protector", 
     	[6]     = "s|Guardian of Ancient Kings",
 	},
 

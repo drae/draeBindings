@@ -27,7 +27,7 @@ local warriorBase = {
 local arms = {
 	BUTTON4 = "s|Overpower",
 	BUTTON5 = "s|Slam",
-	["#"] 	= "s|Whirlwind",
+	[";"] 	= "s|Whirlwind",
 	[6]		= "s|Die by the Sword",
 
 	["`"] 	= "s|Avatar",
@@ -35,7 +35,7 @@ local arms = {
 	shift = {
 		BUTTON4	= "s|Cleave",
 		BUTTON5	= "s|Mortal Strike",
-		["#"]	= "s|Bladestorm",
+		[";"]	= "s|Bladestorm",
 		[6]		= "s|Rallying Cry",
 	},
 
@@ -51,7 +51,7 @@ local arms = {
 local fury = {
 	BUTTON4 = "s|Raging Blow",
 	BUTTON5	= "s|Furious Slash",
-	["#"] = "s|Whirlwind",
+	[";"] = "s|Whirlwind",
 	["`"] = "s|Battle Cry",
 
 	shift = {
@@ -67,19 +67,19 @@ local fury = {
 
 local prot = {
 	BUTTON5 = "s|Devastate",
-	["#"]	= "s|Shield Slam",
+	[";"]	= "s|Shield Slam",
 	[6]		= "s|Demoralizing Shout",
 	[9]		= "s|Shockwave",
 	
 	shift = {
 		BUTTON5 = "s|Revenge",
-		["#"] 	= "s|Shield Block",
+		[";"] 	= "s|Shield Block",
 		[6]		= "s|Last Stand",
 	},
 
 	alt = {
 		BUTTON5 = "s|Thunder Clap",
-		["#"] 	= "s|Ignore Pain",
+		[";"] 	= "s|Ignore Pain",
 		[6]		= "s|Shield Wall",
 		[9] 	= "s|Intercept",
 	},
