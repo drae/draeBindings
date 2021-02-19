@@ -51,8 +51,8 @@ local monkBase = {
 	-- Mouse based
 	BUTTON3 = 'm|/stopcasting\n/cast Leg Sweep',
 	BUTTON5 = 's|Tiger Palm',
-	[';'] 	= 'm|/cast !Spinning Crane Kick\n/cast !Rushing Jade Wind',
 	[9] 	= 's|Roll',
+	['#']	= 'm|/cast !Spinning Crane Kick',
 
 	-- Keyboard based
 --	C 		= 'm|/cast [@MOUSEOVER,help][@PLAYER][] Detox',
@@ -61,9 +61,10 @@ local monkBase = {
 	['\\'] 	= 'm|/cast [@MOUSEOVER,dead][@TARGET,dead][] Resuscitate',
 
 	shift = {
+		BUTTON5 = 's|Blackout Kick',
 		-- Mouse based
 		[6] 	= 'm|/cast Dampen Harm\n/cast Diffuse Magic',
---		[8] 	= 'm|/cast [@MOUSEOVER,help][] Chi Wave\n/cast [@MOUSEOVER,help][] Zen Sphere\n/cast Chi Burst',
+--		[8] 	= 'm|/cast [@MOUSEOVER,help][] Chi Wave\n/cast Chi Burst',
 
 		-- Keyboard based
 		[2] 	= "m|/cast [@MOUSEOVER,help][@PLAYER][] Tiger's Lust",
@@ -74,6 +75,7 @@ local monkBase = {
 		-- Mouse based
 		BUTTON3 = 'm|/stopcasting\n/cast [@FOCUS,harm][] Paralysis',
 		[9] 	= 's|Transcendence: Transfer',
+		['#'] 	= 'm|/cast !Refreshing Jade Wind\n/cast !Rushing Jade Wind',
 
 		-- Keyboard based
 	},
@@ -94,12 +96,11 @@ local mistweaver = {
 	[7]		= 's|Thunder Focus Tea',
 
 	-- Keyboard based
-	['`'] 	= 'm|/cast [@CURSOR][@PLAYER][] Summon Jade Serpent Statue\n/cast Invoke Chi-Ji, the Red Crane\n/cast Refreshing Jade Wind',
+	['`'] 	= 'm|/cast [@CURSOR][@PLAYER][] Summon Jade Serpent Statue\n/cast Invoke Chi-Ji, the Red Crane\n/cast Invoke Yu\'lon, the Jade Serpent',
 
 	shift = {
-		BUTTON5 = 's|Blackout Kick',
 		[7] 	= 's|Mana Tea',
-		[';'] 	= 's|Essence Font',
+		['#'] 	= 's|Essence Font',
 	},
 
 	alt = {
@@ -127,8 +128,7 @@ local windwalker = {
 		-- Mouse based
 		BUTTON3 = 's|Spear Hand Strike',
 		BUTTON4 = 's|Fist of the White Tiger',
-		BUTTON5 = 's|Blackout Kick',
-		[';'] 	= 'm|/cast !Fists of Fury',
+		['#'] 	= 'm|/cast !Fists of Fury',
 		[9] 	= 's|Flying Serpent Kick',
 
 		-- Keyboard based
@@ -137,7 +137,6 @@ local windwalker = {
 		-- Mouse based
 		BUTTON4 = 's|Storm, Earth, and Fire',
 		BUTTON5 = 's|Rising Sun Kick',
-		[';'] 	= 's|Chi Burst',
 
 		-- Keyboard based
 	},
@@ -154,14 +153,13 @@ local brewmaster = {
 	shift = {
 		BUTTON3 = 's|Spear Hand Strike',
 		BUTTON4 = 's|Expel Harm',
-		BUTTON5 = 's|Blackout Strike',
-		[6] = "s|Purifying Brew",
+		[6] 	= "s|Purifying Brew",
 	},
 
 	alt = {
 		BUTTON4 = 's|Breath of Fire',
 		BUTTON5 = 's|Keg Smash',
-		[6]	= 's|Fortifying Brew',
+		[6]		= 's|Fortifying Brew',
 	},
 
 	ctrl = {}
