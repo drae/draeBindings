@@ -141,7 +141,7 @@ local windwalker = {
 		-- Keyboard based
 	},
 	ctrl = {
-		[";"]	= "s|Whirling Dragon Punch",
+		["#"]	= "s|Whirling Dragon Punch",
 	}
 }
 

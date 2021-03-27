@@ -58,10 +58,12 @@ local palaBase = {
 		[9]		= 's|Summon Steward',
 
 		-- Keyboard based
-		['`'] 	= 'm|/cast [talent:5/2] Holy Avenger', -- Lvl 90 talent
 		[1] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Protection',
 		[2] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Freedom',
 		[3] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Sacrifice',
+		[4] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Sanctuary',
+		[5] 	= 'm|/cast [@MOUSEOVER,help][] Hand of Hindrance',
+
 		F 		= 'm|/use Healthstone',
 		R 		= 'm|/use 14'
 	},
@@ -83,16 +85,17 @@ local palaBase = {
 
 local prot = {
 	BUTTON3 = 'm|/stopcasting\n/cast [@FOCUS,exists,harm][] Rebuke',
+	BUTTON4 = "s|Avenger's Shield", -- Main rotation
 
 	shift = {
 		-- Mouse based
-		BUTTON5 = "s|Avenger's Shield", -- Main rotation
 		[6] 	= 's|Guardian of Ancient Kings'
 	},
 
 	alt = {
 		-- Mouse based
 		[6] 	= 's|Ardent Defender', -- Damage Reduction 3
+		['#']	= "m|/cast [@TARGET,harm] Shield of the Righteous",
 	},
 
 	ctrl = {
@@ -142,12 +145,19 @@ local retri = {
 		-- Mouse based
 		BUTTON4 = 's|Wake of Ashes',
 		['#'] 	= "s|Templar's Verdict", -- HoPo spender (3*)
+
+		-- Keyboard based
+		['`'] 	= 'm|/cast [talent:5/2] Holy Avenger, [talent:5/3] Seraphim', -- Lvl 90 talent
 	},
 
 	alt = {
 		-- Mouse based
 		BUTTON4 = 's|',
 		['#'] 	= 's|Divine Storm', -- HoPo spender (3*)
+	},
+
+	ctrl = {
+		['#'] = 'm|/cast [@CURSOR][] Final Reckoning',
 	}
 }
 
@@ -201,6 +211,7 @@ local holy = {
 		[7] 	= 's|Aura Mastery',
 
 		-- Keyboard based
+		['`'] 	= 'm|/cast [talent:5/2] Holy Avenger'
 	},
 
 	alt = {
