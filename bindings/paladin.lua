@@ -38,7 +38,7 @@ local _, bindings =	...
 local palaBase = {
 	-- Mouse based
 	BUTTON5 = 'm|/cast [harm] Crusader Strike', -- Main rotation (\n/stopmacro [harm]\n/targetenemy\n/cast Crusader Strike\n/targetlasttarget)
-	[8]		= 's|Divine Toll',
+	[8]		= 'm|/cast Divine Toll\n/cast [@CURSOR][] Ashen Hallow\n/cast Vanquisher\'s Hammer',
 	['#']	= 'm|/cast [@PLAYER][] Word of Glory',
 
 	-- Keyboard based
@@ -55,7 +55,7 @@ local palaBase = {
 		BUTTON5 = 's|Judgment', -- Main rotation
 		[6] 	= 'm|/cqs\n/stopcasting\n/cast Divine Shield',
 		[8]		= 'm|/cqs\n/use Phial of Serenity',
-		[9]		= 's|Summon Steward',
+		[9]		= 'm|/cast Summon Steward\n/cast [@CURSOR][] Door of Shadows\n/cast Fleshcraft',
 
 		-- Keyboard based
 		[1] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Protection',
@@ -201,9 +201,10 @@ local retri = {
 ]]
 local holy = {
 	-- Mouse based
+	BUTTON4 = "m|/cast [@CURSOR][] Light's Hammer",
 	[6] 	= 's|Divine Protection',
 	[7]		= 's|Rule of Law',
-	[8]		= 'm|/cast Rule of Law\n/cast [@mouseover, help, nodead][] Divine Toll', --/use 14
+	[8]		= 'm|/cast [@MOUSEOVER,help,nodead][] Divine Toll\n/cast [@CURSOR][] Ashen Hallow\n/cast Vanquisher\'s Hammer', --/use 14
 
 	shift = {
 		-- Mouse based
