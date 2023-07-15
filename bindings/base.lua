@@ -16,6 +16,7 @@ bindings.base = {
 	},
 
 	alt = {
+		M 		= "m|/run C_MountJournal.SummonByID(460)", -- Grand Expedition Yak
 		Z 		= "m|/hideui",
 	},
 }

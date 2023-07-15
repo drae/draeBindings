@@ -1,4 +1,4 @@
-## Interface: 80000
+## Interface: 100002
 ## Title: draeBindings
 ## Author: Haste - modified by Drae
 ## Version: 1.0
@@ -9,6 +9,7 @@ bindings\base.lua
 bindings\deathknight.lua
 bindings\demonhunter.lua
 bindings\druid.lua
+bindings\evoker.lua
 bindings\hunter.lua
 bindings\mage.lua
 bindings\monk.lua

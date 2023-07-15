@@ -33,7 +33,7 @@ local shamanBase = {
 	BUTTON5 = 's|Lightning Bolt', -- Main rotation
 	[6]		= 's|Astral Shift',
 	[8]		= 's|Primordial Wave', -- Covenant primary
-	[9]		= '',
+	[9]		= 'm|/cast [known:Storm Elemental] Storm Elemental;Fire Elemental',
 	['#']	= '',
 
 	-- Keyboard based
@@ -49,15 +49,14 @@ local shamanBase = {
 		BUTTON3 = 'm|/cast [@CURSOR][] Capacitor Totem',
 		BUTTON5 = 'm|/startattack\n/cast Chain Lightning', -- Main rotation
 		[6] 	= '',
-		[8]		= 'm|/cast Fleshcraft', -- Covenant secondary
-		[9]		= '',
+		[9]		= 's|Earth Elemental',
 
 		-- Keyboard based
 		[1] 	= 'm|/cast [@CURSOR][] Earthbind Totem',
 		[2] 	= 'm|/cast [@CURSOR][] Capacitor Totem',
 		[3] 	= 's|Healing Stream Totem',
 		[4] 	= 's|Tremor Totem',
-		[5]		= 's|Wind Rush Totem',
+		[5]		= 'm|/cast [@CURSOR][] Liquid Magma Totem',
 		C		= '',
 		F 		= 'm|/use Healthstone',
 		R 		= 'm|/use  14',
@@ -67,11 +66,12 @@ local shamanBase = {
 	alt = {
 		-- Mouse based
 		BUTTON3 = 'm|/cast [@FOCUS,exists,harm][] Hex',
-		[6]		= 'm|/castsequence reset=60 Earth Elemental, Harden Skin',
+		[6]		= 's|Ancestral Guidance',
 		[8]		= '', -- Covenant tertiary
 		[9] 	= 's|Ghost Wolf',
 
 		-- Keyboard based
+		['`'] 	= 's|Heroism', -- Major offensive cooldown
 		C		= ''
 	},
 
@@ -82,9 +82,7 @@ local shamanBase = {
 		[6] 	= 'm|/use 6', -- Damage Reduction 4
 
 		-- Keyboard based
-		['`'] 	= 's|Heroism', -- Major offensive cooldown
 		[1] 	= 'm|/cast Skyfury totem\n/cast Counterstrike Totem',
-		[2] 	= 's|Grounding totem',
 		[3] 	= '',
 		[4] 	= '',
 		[5]		= '',
@@ -93,7 +91,7 @@ local shamanBase = {
 
 local elemental = {
 	['#']	= 's|Earth Shock',
-	['`']	= 'm|/use 14\n/cast [talent:7/2] Stormkeeper; [talent:7/3] Ascendance',
+	['`']	= 'm|/use 14\n/cast Stormkeeper',
 
 	shift = {
 		-- Mouse based
@@ -108,7 +106,6 @@ local elemental = {
 		BUTTON5 = 's|Flame Shock', -- Main rotation
 
 		-- Keyboard based
-		[1] 	= 's|Liquid Magma Totem',
 	},
 
 	ctrl = {

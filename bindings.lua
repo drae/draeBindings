@@ -109,9 +109,9 @@ local createButton = function(key)
 	end
 
 	local btn = CreateFrame("Button", 'draeBindings' .. key, _STATE, "SecureActionButtonTemplate");
+	btn:RegisterForClicks("AnyUp", "AnyDown")
 	btn:SetAttribute('_childupdate-state-changed', [[
 	   local type = message and self:GetAttribute('ob-' .. message .. '-type') or self:GetAttribute('ob-base-type')
-
 	   -- It's possible to have buttons without a default state.
 	   if(type) then
 	      local attr, attrData = strsplit(',', (

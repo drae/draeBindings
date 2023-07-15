@@ -5,34 +5,6 @@ end
 local _, bindings = ...
 
 --[[
-		Clique setup
-		------------
-
-		Mirror setup here for mouseover healing (BUTTON4 at rear)
-
-		shift-BUTTON4	- Cleanse
-
-		General setup
-		-------------
-
-		', #, BUTTON4, BUTTON5 	- Primary rotation abilities
-		BUTTON3					- Interrupts/Stuns/CC
-
-		5 						- Defensive cooldowns
-		6						- Power generation / Immunities
-		7						- Group cooldown
-
-		8 		 				- All HoPo uses
-		9						- Misc / Talents
-
-		E						- Taunts
-		F						- Get out of jail free -> Every man for himself, Emancipate, Healthstone
-		R						- Trinkets
-
-		G						- Secondary throughput Cooldowns
-		`						- Major throughput cooldown
-
-		\						- Mass Ressurection
 
 --]]
 local base = {
@@ -41,30 +13,40 @@ local base = {
 	[6] = "m|/cast Arcane Barrier\n/cast Blazing Barrier\n/cast Ice Barrier", -- Survivability (Tier 2)
 	[8] = "m|/cast Incanter's Ward\n/cast Rune of Power",
 	[9] = "s|Blink", -- Escape/CC
+
 	-- Keyboard binds
+	["`"] = "m|/qc 4\n/cast Arcane Power\n/use 13\n/cast Lifeblood\n/cast Alter Time", -- Suggested macro
 	F = "m|/stopcasting\n/cast Escape Artist", -- Out of jail free card
 	R = "m|/use 12",
 	C = "m|/cast [@MOUSEOVER,help][@PLAYER][] Remove Curse",
+
 	shift = {
 		-- Mouse binds
 		BUTTON3 = "m|/stopcasting\n/cast Frost Nova",
 		[6] = "m|/stopcasting\n/cancelaura Ice Block\n/cast Ice Block",
+
 		-- Keyboard binds
-		["`"] = "s|Time Warp",
+		["`"] = "s|Shifting Power",
+		C = "s|Spellsteal",
 		F = "m|/use Healthstone",
 		R = "m|/use 13"
 	},
+
 	alt = {
 		-- Mouse binds
 		BUTTON3 = "m|/cast [combat] Presence of Mind\n/cast [@focus,harm][@target,harm][] Polymorph(Turtle)",
-		[6] = "m|/cancelaura Invisibility\n/cast Invisibility",
+		[6] = "m|/cancelaura Greater Invisibility\n/cast Greater Invisibility",
 		[7] = "m|/cast Ice Floes", -- Cast on the move (Tier 1)
+
 		-- Keyboard binds
+		["`"] = "s|Time Warp", -- Heroism/Bloodlust
 		F = "s|Slow Fall"
 	},
+
 	ctrl = {
-		BUTTON3 = "m|/stopcasting\n/cast Spellsteal",
-		[9] = "m|/use Heart Essence"
+		BUTTON3 = "m|/stopcasting\n/cast Blast Wave",
+		["#"] 	= "s|Arcane Explosion",
+		[6]		= "s|Mirror Image"
 	}
 }
 
@@ -79,11 +61,10 @@ local arcane = {
 	-- Mouse binds
 	BUTTON5 = "s|Arcane Blast",
 	-- Keyboard binds
-	["`"] = "m|/qc 4\n/cast Arcane Power\n/use 13\n/cast Lifeblood\n/cast Alter Time", -- Suggested macro
+
 	shift = {
 		-- Mouse binds
 		BUTTON5 = "m|/cast [nochanneling:Arcane Missiles] Arcane Missiles",
-		[";"] = "s|Arcane Explosion",
 		[7] = "s|Evocation" -- Replenishment
 	},
 	alt = {
@@ -104,19 +85,18 @@ local fire = {
 	-- Mouse binds
 	BUTTON4 = "s|Fire Blast",
 	BUTTON5 = "s|Fireball",
-	[";"] = "s|Cinder Strike",
+	["#"] = "s|Cinder Strike",
 	-- Keyboard binds
 
 	shift = {
 		-- Mouse binds
 		BUTTON4 = "s|Phoenix's Flames",
 		BUTTON5 = "s|Pyroblast",
-		[";"] = "m|/cast [@CURSOR] Flamestrike"
 	},
 	alt = {
 		BUTTON4 = "s|Scorch",
 		BUTTON5 = "s|Combustion",
-		[";"] = "s|Dragon's Breath"
+		["#"] = "s|Dragon's Breath"
 	}
 }
 
@@ -129,32 +109,32 @@ local fire = {
 --]]
 local frost = {
 	-- Mouse binds
-	BUTTON4 = "s|Ebonbolt",
+	BUTTON4 = "s|Flurry",
 	BUTTON5 = "s|Frostbolt",
-	[";"] = "s|Frozen Orb",
+	["#"] = "s|Frozen Orb",
 	[7] = "s|Icy Veins",
 	-- Keyboard binds
 
 	shift = {
 		-- Mouse binds
-		BUTTON4 = "s|Flurry",
+		BUTTON4 = "s|Ebonbolt",
 		BUTTON5 = "s|Ice Lance",
-		[";"] = "s|Cone of Cold",
+		["#"] = "s|Cone of Cold",
 		[7] = "s|Cold Snap",
 		-- Keyboard binds
-		C = "m|/cast [pet] Freeze"
+		C = "m|/cast [@CURSOR,pet] Freeze"
 	},
 	alt = {
 		-- Mouse binds
 		BUTTON5 = "s|Glacial Spike",
-		[";"] = "m|/cast [@CURSOR] Blizzard"
+		["#"] = "m|/cast [@CURSOR][] Blizzard"
 
 		-- Keyboard binds
 	},
 	ctrl = {
-		[";"] = "s|Comet Storm"
 	}
 }
+--["#"] = "s|Comet Storm"
 
 draeBindings:RegisterKeyBindings("Arcane", bindings.base, base, arcane)
 draeBindings:RegisterKeyBindings("Fire", bindings.base, base, fire)
