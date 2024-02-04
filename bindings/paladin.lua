@@ -45,7 +45,7 @@ local palaBase = {
 	-- Mouse based
 	BUTTON3 = 'm|/stopcasting\n/cast [@FOCUS,exists,harm][] Rebuke',
 	BUTTON5 = 'm|/cast [harm] Crusader Strike',
-	[8]		= 's|Divine Toll',
+	[8]		= 'm|/cast [known:Divine Toll] Divine Toll',
 --	['#']	= 'm|/cast [@PLAYER] Word of Glory',
 
 	-- Keyboard based
@@ -145,7 +145,7 @@ local ret = {
 	[6] 	= 's|Divine Protection',
 
 	-- Keyboard based
-	F 		= 'm|/use Potion of Elemental Power',
+	F 		= 'm|/use Elemental Potion of Ultimate Power',
 
 
 	shift = {
@@ -165,7 +165,7 @@ local ret = {
 	},
 
 	ctrl = {
-		['#'] = 'm|/cast [@CURSOR][] Final Reckoning',
+		['#'] = 'm|/cast [@CURSOR,known:Final Reckoning][known:Final Reckoning] Final Reckoning\n/cast [known:Execution Sentence] Execution Sentence',
 	}
 }
 
@@ -214,7 +214,8 @@ local holy = {
 	[7]     = "m|/cast [known:Hand of Divinity] Hand of Divinity; [known:Divine Favor] Divine Favor",
 
 	-- Keyboard based
-	F 		= 'm|/use Potion of Shocking Disclosure',
+	F 		= 'm|/use Elemental Potion of Ultimate Power',
+	C		= 's|Cleanse',
 
 	shift = {
 		-- Mouse based

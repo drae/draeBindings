@@ -51,29 +51,31 @@ local monkBase = {
 	-- Mouse based
 	BUTTON3 = 'm|/stopcasting\n/cast Leg Sweep',
 	BUTTON5 = 's|Tiger Palm',
+	[6] 	= 's|Fortifying Brew',
 	[9] 	= 's|Roll',
 	['#']	= 'm|/cast !Spinning Crane Kick',
 
 	-- Keyboard based
---	C 		= 'm|/cast [@MOUSEOVER,help][@PLAYER][] Detox',
+	C 		= 'm|/cast [@MOUSEOVER,help][@PLAYER][] Detox',
 	E 		= 's|Provoke',
-	R 		= 'm|/use 12', -- Trinket 1
+	R 		= 'm|/use 13', -- Trinket 1
 	['\\'] 	= 'm|/cast [@MOUSEOVER,dead][@TARGET,dead][] Resuscitate',
 
 	shift = {
 		BUTTON5 = 's|Blackout Kick',
 		-- Mouse based
-		[6] 	= 'm|/cast Dampen Harm\n/cast Diffuse Magic',
+		[6] 	= 'm|/cast [known:Dance of the Wind] Dance of the Wind; [known:Dampen Harm] Dampen Harm',
 --		[8] 	= 'm|/cast [@MOUSEOVER,help][] Chi Wave\n/cast Chi Burst',
 
 		-- Keyboard based
 		[2] 	= "m|/cast [@MOUSEOVER,help][@PLAYER][] Tiger's Lust",
-		R 		= 'm|/use 13' -- Trinket 2 on use,
+		R 		= 'm|/use 14' -- Trinket 2 on use,
 	},
 
 	alt = {
 		-- Mouse based
-		BUTTON3 = 'm|/stopcasting\n/cast [@FOCUS,harm][] Paralysis',
+		BUTTON3 = 'm|/stopcasting\n/cast [@FOCUS,harm,known:Paralysis][] Paralysis',
+		[6] 	= 'm|/cast [known:Yu\'lon\'s Grace] Yu\'lon\'s Grace; [known:Diffuse Magic] Diffuse Magic',
 		[9] 	= 's|Transcendence: Transfer',
 		['#'] 	= 'm|/cast !Refreshing Jade Wind\n/cast !Rushing Jade Wind',
 
@@ -83,7 +85,7 @@ local monkBase = {
 	ctrl = {
 		-- Mouse based
 		BUTTON3 = 'm|/cast [@CURSOR] Ring of Peace\n/cast Song of Chi-Ji',
-		BUTTON4 = 'm|/use Heart Essence',
+		BUTTON4 = '',
 		BUTTON5 = 's|Crackling Jade Lightning',
 		[9] 	= 's|Transcendence',
 
@@ -92,7 +94,6 @@ local monkBase = {
 }
 
 local mistweaver = {
-	[6] 	= 's|Fortifying Brew',
 	[7]		= 's|Thunder Focus Tea',
 
 	-- Keyboard based
@@ -119,15 +120,14 @@ local mistweaver = {
 
 local windwalker = {
 	BUTTON4 = 's|Touch of Death',
-	[6] 	= 's|Touch of Karma',
 
 	-- Keyboard based
-	['`'] 	= 'm|/cast Tigereye Brew\n/cast Invoke Xuen, the White Tiger',
+	['`'] 	= 's|Invoke Xuen, the White Tiger',
 
 	shift = {
 		-- Mouse based
 		BUTTON3 = 's|Spear Hand Strike',
-		BUTTON4 = 's|Fist of the White Tiger',
+		BUTTON4 = '',
 		['#'] 	= 'm|/cast !Fists of Fury',
 		[9] 	= 's|Flying Serpent Kick',
 
@@ -135,13 +135,14 @@ local windwalker = {
 	},
 	alt = {
 		-- Mouse based
-		BUTTON4 = 's|Storm, Earth, and Fire',
+		BUTTON4 = 'm|/cast [known:152173] Serenity; Storm, Earth, and Fire',
 		BUTTON5 = 's|Rising Sun Kick',
 
 		-- Keyboard based
 	},
 	ctrl = {
 		["#"]	= "s|Whirling Dragon Punch",
+		[6] 	= 's|Touch of Karma',
 	}
 }
 
@@ -152,14 +153,12 @@ local brewmaster = {
 
 	shift = {
 		BUTTON3 = 's|Spear Hand Strike',
-		BUTTON4 = 's|Expel Harm',
 		[6] 	= "s|Purifying Brew",
 	},
 
 	alt = {
 		BUTTON4 = 's|Breath of Fire',
 		BUTTON5 = 's|Keg Smash',
-		[6]		= 's|Fortifying Brew',
 	},
 
 	ctrl = {}
