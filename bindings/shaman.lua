@@ -1,151 +1,193 @@
-if (select(2, UnitClass"player") ~= "SHAMAN") then return end
+if (select(2, UnitClass "player") ~= "SHAMAN") then
+    return
+end
 
 local _, bindings = ...
 
 --[[
-		-- In order -> nomod, shift, alt, ctrl
+		MOUSE3 = mousewheel click
+		MOUSE4 = rear left side button
+		MOUSE5 = front left side button
+		# = extra button on side
+		6 = first button on left mouse button edge
+		7 = second button on left mouse button edge
+		8 = tilt mousewheel left
+		9 = tilt mouseright right
 
-		BUTTON5 -> CORE [HEALING]
-		Riptide
-		Healing Wave
-		Healing Surge
+		Clique setup
+		------------
 
-		BUTTON5 -> CORE [DPS]
-		Lightning Bolt
-		Flame Shock ?
-		Lava Surge ?
+		BUTTON5			"Instant" heal
+		shift-BUTTON5	Fast cast heal
+		alt-BUTTON5 	Slow cast heal
+		ctrl-BUTTON5	Heal improver
 
-		SIDE BUTTON [#] -> AoE
-		Chain Heal
-		Healing Rain (resto)
+		BUTTON4
+		shift-BUTTON4
+		alt-BUTTON4
+		ctrl-BUTTON4
 
-		BUTTON4 -> ROTATIONAL TALENTS
-		- Row 1
-		  Light's Hammer / Bestow Faith
-		- Row 2
-		  Holy Prism
--- ]]
+		C				Cleanse
 
+		General setup
+		-------------
+
+		-- Mouse
+		#, 						Earth spells
+		BUTTON4					Fire spells
+		BUTTON5					Nature spells
+		BUTTON3                 Interrupts/Stuns/CC
+		6                       Defensive cooldowns
+		7                       Party/Raid defensives
+		8                       Class specials, e.g. hopo uses, etc.
+		9						Movement speed enhancers
+
+		-- Keyboard
+		E                       Taunts
+		F                       Healthstone/Pots
+		R                       Trinkets
+		G
+		`                       Major dmg/healing cooldown
+		\                       Redemption/Mass Ressurection
+--]]
 
 local shamanBase = {
-	-- Mouse based
+    -- Mouse based
     BUTTON3 = 'm|/stopcasting\n/cast Wind Shear',
-	BUTTON5 = 's|Lightning Bolt', -- Main rotation
-	[6]		= 's|Astral Shift',
-	[8]		= 's|Primordial Wave', -- Covenant primary
-	[9]		= 'm|/cast [known:Storm Elemental] Storm Elemental;Fire Elemental',
-	['#']	= '',
+    BUTTON4 = 's|Flame Shock',
+    BUTTON5 = 's|Lightning Bolt',
+    [6] = 's|Astral Shift', -- Damage Reduction 1
+    [7] = 's|Ancestral Guidance',
+    [8] = '',
+    [9] = 's|Ghost Wolf',
+    ['#'] = '',
 
-	-- Keyboard based
-	C 		= 'm|/stopcasting\n/cast [@TARGET,help] Cleanse Spirit;[@TARGET,harm] Purge;[@SELF][] Cleanse Spirit', -- Dispell
-	E 		= '', -- Taunt
-	F 		= 'm|/stopcasting\n/cast Stoneform', -- Racial
-	R 		= 'm|/use 13',
-	V		= 'm|/cast [@MOUSEOVER][] Lightning Shield',
-	['\\'] 	= 'm|/use [@MOUSEOVER,help,dead,combat][@TARGET,help,dead,combat] Disposable Spectrophasic Reanimator; [@MOUSEOVER,dead][@TARGET,dead][] Ancestral Spirit', -- Redemption
+    -- Keyboard based
+    C = 'm|/stopcasting\n/cast [@TARGET,help] Cleanse Spirit;[@TARGET,harm] Purge;[@SELF][] Cleanse Spirit', -- Dispell
+    E = '', -- Taunt
+    F = 'm|/use Healthstone\n/use Algari Healing Potion',
+    R = 'm|/use 13',
+    ['\\'] = 'm|/cast [@MOUSEOVER,dead][@TARGET,dead][] Ancestral Spirit', -- Redemption
 
-	shift = {
-		-- Mouse based
-		BUTTON3 = 'm|/cast [@CURSOR][] Capacitor Totem',
-		BUTTON5 = 'm|/startattack\n/cast Chain Lightning', -- Main rotation
-		[6] 	= '',
-		[9]		= 's|Earth Elemental',
+    shift = {
+        -- Mouse based
+        BUTTON3 = 'm|/cast [@CURSOR][] Capacitor Totem',
+        BUTTON4 = 's|Lava Burst',
+        BUTTON5 = 'm|/startattack\n/cast Chain Lightning',
+        [6] = 's|Stone Bulwark Totem', -- Damage Reduction 2
+        [7] = '', -- Party damage reduction
+        [9] = 's|Gust of Wind',
 
-		-- Keyboard based
-		[1] 	= 'm|/cast [@CURSOR][] Earthbind Totem',
-		[2] 	= 'm|/cast [@CURSOR][] Capacitor Totem',
-		[3] 	= 's|Healing Stream Totem',
-		[4] 	= 's|Tremor Totem',
-		[5]		= 'm|/cast [@CURSOR][] Liquid Magma Totem',
-		C		= '',
-		F 		= 'm|/use Healthstone',
-		R 		= 'm|/use  14',
-		V		= 'm|/cast [@MOUSEOVER][@SELF][] Earth Shield',
-	},
+        -- Keyboard based
+        [1] = '',
+        [2] = '',
+        [3] = '',
+        [4] = 's|Tremor Totem',
+        [5] = '',
+        C = '',
+        F = 's|Stoneform',
+        R = 'm|/use  14'
+    },
 
-	alt = {
-		-- Mouse based
-		BUTTON3 = 'm|/cast [@FOCUS,exists,harm][] Hex',
-		[6]		= 's|Ancestral Guidance',
-		[8]		= '', -- Covenant tertiary
-		[9] 	= 's|Ghost Wolf',
+    alt = {
+        -- Mouse based
+        BUTTON3 = 'm|/cast [@FOCUS,exists,harm][] Hex',
+        BUTTON4 = '',
+        BUTTON5 = 's|Lightning Lasso',
+        [6] = 's|Earth Elemental', -- Damage Reduction 4
+        [7] = '', -- Party damage reduction
+        [8] = '', -- Covenant tertiary
+        [9] = 's|Spiritwalker\'s Grace',
 
-		-- Keyboard based
-		['`'] 	= 's|Heroism', -- Major offensive cooldown
-		C		= ''
-	},
+        -- Keyboard based
+        C = 'm|/cast [@FOCUS,harm,nodead][@TARGET,harm,nodead][@MOUSEOVER,harm][] Purge'
+    },
 
-	ctrl = {
-		-- Mouse based
-		BUTTON3	= 's|Thunderstorm',
-		BUTTON5 = 's|Frost Shock', -- Main rotation
-		[6] 	= 'm|/use 6', -- Damage Reduction 4
+    ctrl = {
+        -- Mouse based
+        BUTTON3 = 's|Thunderstorm',
+        BUTTON4 = '',
+        BUTTON5 = '',
 
-		-- Keyboard based
-		[1] 	= 'm|/cast Skyfury totem\n/cast Counterstrike Totem',
-		[3] 	= '',
-		[4] 	= '',
-		[5]		= '',
-	}
+        -- Keyboard based
+        ['`'] = 's|Heroism', -- Major offensive cooldown
+        [1] = '',
+        [3] = '',
+        [4] = '',
+        [5] = '',
+        [6] = 'm|/cast [@CURSOR][] Earthbind Totem'
+    }
 }
 
 local elemental = {
-	['#']	= 's|Earth Shock',
-	['`']	= 'm|/use 14\n/cast Stormkeeper',
+    -- Mouse based
+    ['#'] = 's|Earth Shock',
 
-	shift = {
-		-- Mouse based
-		['#']	= 'm|/cast [@CURSOR][] Earthquake',
-		[6]		= 's|Spiritwalker\'s Grace',
+    -- Keyboard based
+    ['`'] = 'm|/cast Stormkeeper',
 
-		-- Keyboard based
-		['`'] 	= 'm|/castsequence reset=60 Fire Elemental, Meteor', -- Lvl 90 talent
-	},
+    shift = {
+        -- Mouse based
+        ['#'] = 'm|/cast [@CURSOR][] Earthquake',
 
-	alt = {
-		BUTTON5 = 's|Flame Shock', -- Main rotation
+        -- Keyboard based
+        ['`'] = 'm|/cast [known:Storm Elemental] Storm Elemental; [known:Fire Elemental] Fire Elemental'
+    },
 
-		-- Keyboard based
-	},
+    alt = {
+        -- Mouse based
+        BUTTON4 = 'm|/castsequence reset=30 Primordial Wave, Nature\'s Swiftness', -- Main rotation
 
-	ctrl = {
-		BUTTON5 = 's|Frost Shock', -- Main rotation
-	}
+        -- Keyboard based
+        ['`'] = 's|Ascendance'
+    },
+
+    ctrl = {
+        BUTTON4 = 'm|/cast [@CURSOR][] Liquid Magma Totem' -- Main rotation
+    }
 }
 
 local restoration = {
-	['`']	= 'm|/use 14\n/cast [talent:7/2] Wellspring; [talent:7/3] Ascendance',
+    -- Mouse based
+    BUTTON4 = 's|Flame Shock', -- Main rotation
+    ["#"] = 'm|/cast [@CURSOR][] Healing Rain',
 
-	shift = {
-		-- Mouse based
-		[6]		= 's|Spiritwalker\'s Grace',
-		[7]		= 's|Healing Tide Totem',
-		["#"]	= 'm|/cast [@CURSOR][] Healing Rain',
-	},
+    -- Keyboard based
+    ['`'] = 'm|/cast [known:Ancestral Guidance] Ancestral Guidance',
+    V = 'm|/cast [@MOUSEOVER][@SELF][] Earth Shield',
 
-	alt = {
-		-- Mouse based
-		[7]		= 'm|/cast [@CURSOR][] Spirit Link Totem',
+    shift = {
+        -- Mouse based
+        BUTTON4 = 's|Lava Burst', -- Main rotation
+        [7] = 's|Cloudburst Totem',
+        ["#"] = 's|Healing Stream Totem',
 
-		-- Keyboard based
-		[1] 	= 'm|/cast [@CURSOR][] Earthgrab Totem',
-		[2] 	= 's|Mana Tide Totem',
-		[3] 	= 'm|/cast [talent:4/2,@CURSOR][] Earthen Wall Totem; [talent:4/3,@CURSOR][] Ancestral Protection Totem',
-		[5]		= '',
-		['\\'] 	= 's|Ancestral Vision'
+        -- Keyboard based
+        C = 'm|/cast [known:Poison Cleansing Totem] Poison Cleansing Totem'
+    },
 
-	},
+    alt = {
+        -- Mouse based
+        [7] = 's|Healing Tide Totem',
 
-	ctrl = {
-	}
+        -- Keyboard based
+        ['`'] = 's|Ascendance',
+        [1] = '',
+        [2] = '',
+        [3] = '',
+        [5] = '',
+        ['\\'] = 's|Ancestral Vision',
+        F = 'm|/use Algari Mana Potion'
+
+    },
+
+    ctrl = {
+        -- Mouse based
+        [7] = 'm|/cast [@CURSOR][] Spirit Link Totem'
+    }
 }
 
-local enhancement = {
-	alt = {
-		-- Keyboard based
-		[1] 	= 's|Windfury Totem',
-	}
-}
+local enhancement = {}
 
 draeBindings:RegisterKeyBindings("Elemental", bindings.base, shamanBase, elemental)
 draeBindings:RegisterKeyBindings("Enhancement", bindings.base, shamanBase, enhancement)

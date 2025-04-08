@@ -17,100 +17,122 @@ local _, bindings = ...
 --]]
 
 local druidBase = {
-	-- Mouse
+	-- Mouse based
 
-	-- Keyboard
-	["\\"]	= "m|/cast [@MOUSEOVER,help][] Revive",
+	-- Keyboard based
+
+	shift = {
+		-- Mouse based
+
+		-- Keyboard based
+	},
 
 	alt = {
-		-- Mouse
+		-- Mouse based
 
-		-- Keyboard
+		-- Keyboard based
 	},
 
 	ctrl = {
-		["\\"]	= "m|/cast [@MOUSEOVER,help,dead][] Rebirth",
+		-- Mouse based
+
+		-- Keyboard based
 	}
 }
 
 local balance = {
-	-- Mouse
+	-- Mouse based
+
+	-- Keyboard based
 
 	shift = {
-		-- Mouse
+		-- Mouse based
 
-		-- Keyboard
+		-- Keyboard based
 	},
 
 	alt = {
+		-- Mouse based
 
-	-- Keyboard
+		-- Keyboard based
 	},
 
 	ctrl = {
+		-- Mouse based
 
-
+		-- Keyboard based
 	}
 }
 
 local feral = {
-	-- Mouse
+	-- Mouse based
+
+	-- Keyboard based
 
 	shift = {
-		-- Mouse
+		-- Mouse based
 
-		-- Keyboard
+		-- Keyboard based
 	},
 
 	alt = {
+		-- Mouse based
 
-	-- Keyboard
+		-- Keyboard based
 	},
 
 	ctrl = {
+		-- Mouse based
 
-
+		-- Keyboard based
 	}
 }
 
 local guardian = {
-	-- Mouse
+	-- Mouse based
+
+	-- Keyboard based
 
 	shift = {
-		-- Mouse
+		-- Mouse based
 
-		-- Keyboard
+		-- Keyboard based
 	},
 
 	alt = {
+		-- Mouse based
 
-	-- Keyboard
+		-- Keyboard based
 	},
 
 	ctrl = {
+		-- Mouse based
 
-
+		-- Keyboard based
 	}
 }
 
 local restoration = {
-	-- Mouse
+	-- Mouse based
+
+	-- Keyboard based
 
 	shift = {
-		-- Mouse
-		[";"]	= "m|/cast [@CURSOR] Effloresence",
+		-- Mouse based
 
-		-- Keyboard
+		-- Keyboard based
 	},
 
 	alt = {
+		-- Mouse based
 
-	-- Keyboard
+		-- Keyboard based
 	},
 
 	ctrl = {
+		-- Mouse based
 
-
+		-- Keyboard based
 	}
 }
 
