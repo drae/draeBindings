@@ -1,4 +1,4 @@
-if (select(2, UnitClass"player") ~= "WARRIOR") then return end
+if (select(2, UnitClass"player") ~= "WARRIOR") or draeBindings.isForever then return end
 
 local _, bindings = ...
 

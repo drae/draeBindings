@@ -1,5 +1,5 @@
-if (select(2, UnitClass 'player') ~= 'PALADIN') then
-    return
+if select(2, UnitClass("player")) ~= "PALADIN" or draeBindings.isForever then
+	return
 end
 
 local _, bindings = ...
@@ -50,71 +50,70 @@ local _, bindings = ...
 --]]
 
 local palaBase = {
-    -- Mouse based
-    BUTTON3 = 'm|/stopcasting\n/cast [@FOCUS,exists,harm][] Rebuke',
-    BUTTON5 = 's|Crusader Strike',
-    --	['#']	= 'm|/cast [@PLAYER] Word of Glory',
-    [9] = 's|Divine Steed',
+	-- Mouse based
+	BUTTON5 = "s|Crusader Strike",
+	--	['#']	= 'm|/cast [@PLAYER] Word of Glory',
+	[9] = "s|Divine Steed",
 
-    -- Keyboard based
-    ['`'] = 'm|/use 14\n/use 13\n/cast Avenging Wrath',
-    E = 'm|/stopcasting\n/cast [@FOCUS,known:Turn Evil][known:Turn Evil] Turn Evil',
-    F = 'm|/use Healthstone\n/use Algari Healing Potion',
-    R = 'm|/use 13',
-    ['\\'] = 'm|/cast [@MOUSEOVER,dead,help][] Redemption',
+	-- Keyboard based
+	["`"] = "s|Avenging Wrath",
+	E = "m|/stopcasting\n/cancelqueuedspell\n/cast [@FOCUS,known:Turn Evil][known:Turn Evil] Turn Evil",
+	--	F = "m|/castsequence reset=combat item:241305", -- EQol macro
+	R = "m|/use 13",
+	["\\"] = "m|/cast [@MOUSEOVER,dead,help][] Redemption",
 
-    shift = {
-        -- Mouse based
-        BUTTON3 = 'm|/stopcasting\n/cast [@FOCUS,exists,harm][] Hammer of Justice',
-        BUTTON5 = 's|Judgment',
-        [6] = 'm|/stopcasting\n/cast Divine Shield',
-        [8] = '',
-        [9] = '',
+	shift = {
+		-- Mouse based
+		BUTTON3 = "m|/stopcasting\n/cancelqueuedspell\n/cast [@FOCUS,exists,harm][] Hammer of Justice",
+		BUTTON5 = "s|Judgment",
+		[6] = "m|/stopcasting\n/cancelqueuedspell\n/cast Divine Shield",
+		[8] = "",
+		[9] = "",
 
-        -- Keyboard based
-        --		[1] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Protection',
-        --		[2] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Freedom',
-        --		[3] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Sacrifice',
-        --		[4] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Sanctuary',
+		-- Keyboard based
+		--		[1] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Protection',
+		--		[2] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Freedom',
+		--		[3] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Sacrifice',
+		--		[4] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Sanctuary',
 
-        C = "s|Arcane Torrent",
-        E = 'm|/stopcasting\n/cast [@FOCUS,exists,harm][] Hand of Reckoning',
-        R = 'm|/use 14'
-    },
+		C = "s|Arcane Torrent",
+		E = "m|/stopcasting\n/cancelqueuedspell\n/cast [@FOCUS,exists,harm][] Hand of Reckoning",
+		R = "m|/use 14",
+	},
 
-    alt = {
-        -- Mouse based
-        BUTTON3 = 'm|/cast [@FOCUS,known:Repentance][known:Repentance] Repentance; [known:Blinding Light] Blinding Light',
-        BUTTON4 = 'm|/cast [known:Divine Toll] Divine Toll',
-        BUTTON5 = 's|Consecration'
-    },
+	alt = {
+		-- Mouse based
+		BUTTON3 = "m|/cast [@FOCUS,known:Repentance][known:Repentance] Repentance; [known:Blinding Light] Blinding Light",
+		BUTTON4 = "m|/cast [known:Holy Prism,@TARGET,harm] Holy Prism\n/cast [known:Divine Toll][] Divine Toll",
+	},
 
-    ctrl = {
-        -- Mouse based
-        BUTTON5 = 's|Hammer of Wrath'
-        --		[6] 	= 'm|/stopmacro\n/cast [@MOUSEOVER,help][@TARGET,help][@PLAYER] Lay on Hands',
+	ctrl = {
+		-- Mouse based
+		BUTTON5 = "s|Hammer of Wrath",
+		--		[6] 	= 'm|/stopmacro\n/cast [@MOUSEOVER,help][@TARGET,help][@PLAYER] Lay on Hands',
 
-        -- Keyboard based
-        --		['\\'] = 'm|/cast [@MOUSEOVER,help,dead][] Intercesson'
-    }
+		-- Keyboard based
+		--		['\\'] = 'm|/cast [@MOUSEOVER,help,dead][] Intercesson'
+	},
 }
 
 local prot = {
-    BUTTON4 = "s|Avenger's Shield", -- Main rotation
-    [6] = 's|Guardian of Ancient Kings',
+	BUTTON3 = "m|/stopcasting\n/cancelqueuedspell\n/cast [@FOCUS,exists,harm][] Rebuke",
+	BUTTON4 = "s|Avenger's Shield", -- Main rotation
+	[6] = "s|Guardian of Ancient Kings",
 
-    shift = {
-        -- Mouse based
-    },
+	shift = {
+		-- Mouse based
+	},
 
-    alt = {
-        -- Mouse based
-        ['#'] = "m|/cast [@TARGET,harm] Shield of the Righteous"
-    },
+	alt = {
+		-- Mouse based
+		["#"] = "m|/cast [@TARGET,harm] Shield of the Righteous",
+	},
 
-    ctrl = {
-        [6] = 's|Ardent Defender' -- Damage Reduction 3
-    }
+	ctrl = {
+		[6] = "s|Ardent Defender", -- Damage Reduction 3
+	},
 }
 
 --[[
@@ -147,30 +146,31 @@ local prot = {
 		Lay on Hands
 ]]
 local ret = {
-    -- Mouse based
-    BUTTON4 = 's|Blade of Justice',
-    [6] = 's|Divine Protection',
+	-- Mouse based
+	BUTTON3 = "m|/stopcasting\n/cancelqueuedspell\n/cast [@FOCUS,exists,harm][] Rebuke",
+	BUTTON4 = "s|Blade of Justice",
+	[6] = "s|Divine Protection",
 
-    shift = {
-        -- Mouse based
-        BUTTON4 = 'm|/use 13\n/cast Wake of Ashes',
-        ['#'] = "s|Templar's Verdict", -- HoPo spender (3*)
+	shift = {
+		-- Mouse based
+		BUTTON4 = "m|/use 13\n/cast Wake of Ashes", -- True for 11.2 and Priory trinket
+		["#"] = "s|Templar's Verdict",        -- HoPo spender (3*)
 
-        -- Keyboard based
-        F = 'm|/use Tempered Potion'
-    },
+		-- Keyboard based
+		F = "m|/use Fleeting Tempered Potion\n/use Tempered Potion",
+	},
 
-    alt = {
-        -- Mouse based
-        ['#'] = 's|Divine Storm', -- HoPo spender (3*)
-        [6] = 's|Shield of Vengeance'
+	alt = {
+		-- Mouse based
+		["#"] = "s|Divine Storm", -- HoPo spender (3*)
 
-        -- Keyboard
-    },
+		-- Keyboard
+	},
 
-    ctrl = {
-        ['#'] = 'm|/cast [@CURSOR,known:Final Reckoning][known:Final Reckoning] Final Reckoning; [known:Execution Sentence] Execution Sentence'
-    }
+	ctrl = {
+		["#"] =
+		"m|/cast [@CURSOR,known:Final Reckoning][known:Final Reckoning] Final Reckoning; [known:Execution Sentence] Execution Sentence",
+	},
 }
 
 --[[
@@ -212,40 +212,38 @@ local ret = {
 		Aura Mastery
 ]]
 local holy = {
-    -- Mouse based
-    BUTTON4 = "m|/cast [known:Holy Prism,@TARGET,harm] Holy Prism",
-    [6] = 's|Divine Protection',
-    [7] = 's|Tyr\'s Deliverance',
-    [8] = 'm|/cast [@mouseover,help,nodead][@player][] Blessing of Summer',
+	-- Mouse based
+	[6] = "s|Divine Protection",
+	[7] = "s|Aura Mastery",
 
-    -- Keyboard based
-    C = 's|Cleanse',
+	-- Keyboard based
+	C = "s|Cleanse",
+	["`"] = "m|/use 13\n/cast Avenging Wrath", -- True for 11.2 and Priory trinket
 
-    shift = {
-        -- Mouse based
-        ['#'] = 's|Light of Dawn',
-        [7] = 's|Aura Mastery',
+	shift = {
+		-- Mouse based
+		["#"] = "s|Light of Dawn",
 
-        -- Keyboard based
-        F = 'm|/use Tempered Potion'
-    },
+		-- Keyboard based
+		F = "m|/use Fleeting Tempered Potion\n/use Tempered Potion",
+	},
 
-    alt = {
-        -- Mouse based
-        ['#'] = "m|/cast [@TARGET,harm] Shield of the Righteous",
+	alt = {
+		-- Mouse based
+		["#"] = "m|/cast Shield of the Righteous",
 
-        -- Keyboard based
-        ['\\'] = 's|Absolution',
-        F = 'm|/use Algari Mana Potion'
-    },
+		-- Keyboard based
+		["\\"] = "s|Absolution",
+		F = "m|/use Algari Mana Potion",
+	},
 
-    ctrl = {
-        -- Mouse based
+	ctrl = {
+		-- Mouse based
 
-        -- Keyboard based
-    }
+		-- Keyboard based
+	},
 }
 
-draeBindings:RegisterKeyBindings('Protection', bindings.base, palaBase, prot)
-draeBindings:RegisterKeyBindings('Retribution', bindings.base, palaBase, ret)
-draeBindings:RegisterKeyBindings('Holy', bindings.base, palaBase, holy)
+draeBindings:RegisterKeyBindings("Protection", bindings.base, palaBase, prot)
+draeBindings:RegisterKeyBindings("Retribution", bindings.base, palaBase, ret)
+draeBindings:RegisterKeyBindings("Holy", bindings.base, palaBase, holy)

@@ -1,4 +1,4 @@
-if (select(2, UnitClass "player") ~= "HUNTER") then
+if (select(2, UnitClass "player") ~= "HUNTER") or draeBindings.isForever then
     return
 end
 

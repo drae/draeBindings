@@ -1,4 +1,4 @@
-## Interface: 100002
+## Interface: 120100, 120105, 16001, 50504, 38001, 20506, 11509
 ## Title: draeBindings
 ## Author: Haste - modified by Drae
 ## Version: 1.0
@@ -19,3 +19,6 @@ bindings\rogue.lua
 bindings\shaman.lua
 bindings\warlock.lua
 bindings\warrior.lua
+bindings\forever\paladin.lua
+bindings\forever\mage.lua
+bindings\forever\shaman.lua
