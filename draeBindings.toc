@@ -1,14 +1,15 @@
-## Interface: 60000
+## Interface: 120100, 120105, 16001, 50504, 38001, 20506, 11509
 ## Title: draeBindings
 ## Author: Haste - modified by Drae
 ## Version: 1.0
 ## Notes: Binding management for mad people.
-## SavedVariablesPerCharacter: draeBindingsDB
 
 bindings.lua
 bindings\base.lua
 bindings\deathknight.lua
+bindings\demonhunter.lua
 bindings\druid.lua
+bindings\evoker.lua
 bindings\hunter.lua
 bindings\mage.lua
 bindings\monk.lua
@@ -18,3 +19,6 @@ bindings\rogue.lua
 bindings\shaman.lua
 bindings\warlock.lua
 bindings\warrior.lua
+bindings\forever\paladin.lua
+bindings\forever\mage.lua
+bindings\forever\shaman.lua

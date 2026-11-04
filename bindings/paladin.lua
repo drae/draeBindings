@@ -1,157 +1,249 @@
-if (select(2, UnitClass"player") ~= "PALADIN") then return end
+if select(2, UnitClass("player")) ~= "PALADIN" or draeBindings.isForever then
+	return
+end
 
 local _, bindings = ...
 
 --[[
+		MOUSE3 = mousewheel click
+		MOUSE4 = rear left side button
+		MOUSE5 = front left side button
+		# = extra button on side
+		6 = first button on left mouse button edge
+		7 = second button on left mouse button edge
+		8 = tilt mousewheel left
+		9 = tilt mouseright right
+
 		Clique setup
 		------------
 
-		Mouseover healing (BUTTON4 at rear)
+		BUTTON5			"Instant" heal
+		shift-BUTTON5	Fast cast heal
+		alt-BUTTON5 	Slow cast heal
+		ctrl-BUTTON5	Heal improver
 
-		BUTTON4			Holy Radiance
-		shift-BUTTON4	Flash of Light
+		BUTTON4			Channeled heal
+		shift-BUTTON4
 		alt-BUTTON4
 		ctrl-BUTTON4
 
-		BUTTON5			Holy Shock
-		shift-BUTTON5	Holy Light
-		alt-BUTTON5
-		ctrl-BUTTON5
-
 		C				Cleanse
-		V				Beacon of Light/Faith
 
 		General setup
 		-------------
 
+		-- Mouse
 		#, BUTTON4, BUTTON5		Primary rotation abilities / heals
 		BUTTON3                 Interrupts/Stuns/CC
+		6                       Defensive cooldowns
+		7                       Special cooldowns
+		8                       Class specials, e.g. hopo uses, etc.
+		9						Movement speed enhancers
 
-		5                       Defensive cooldowns
-		6                       Misc / Sacred Shield / Divine Shield
-
-		8                       All HoPo uses
-		9                       Misc / Talents
-
+		-- Keyboard
 		E                       Taunts
-		F                       Get out of jail free -> Every man for himself, Emancipate, Healthstone
+		F                       Heal pot/healthstone, dps pot, mana pot
 		R                       Trinkets
-		G                       Cooldown
-		`                       Avenging Wrath and anything that should be tied to its use
+		G
+		`                       Major dmg/healing cooldown
 		\                       Redemption/Mass Ressurection
 --]]
 
 local palaBase = {
 	-- Mouse based
-	BUTTON3 = "m|/stopcasting\n/cast [@FOCUS,exists,harm][] Rebuke",                               				-- Interrupt
-	BUTTON4 = "s|Judgment",                                                                                     -- Main rotation
-	BUTTON5 = "s|Crusader Strike",																				-- Main rotation
-	["#"]	= "s|Hammer of Wrath",                                                                              -- Main rotation
-	[6]     = "s|Divine Protection",	                          											-- Damage Reduction 1
-	[7]		= "m|/cast [@MOUSEOVER,help][@TARGET,help][@PLAYER] Sacred Shield",
-	[8]		= "m|/cast [@MOUSEOVER,help][@TARGET,help][@PLAYER] Word of Glory",                                 -- HoPo user
+	BUTTON5 = "s|Crusader Strike",
+	--	['#']	= 'm|/cast [@PLAYER] Word of Glory',
+	[9] = "s|Divine Steed",
 
 	-- Keyboard based
-	C		= "m|/cast [@MOUSEOVER,help][] Cleanse",                   -- Dispell
-	E		= "m|/stopcasting\n/cast Reckoning",                       -- Taunt
-	F		= "m|/stopcasting\n/cast Every Man for Himself",           -- Out of jail free card
---	R		= "m|/use 13",                                             -- Trinket Slot 1
-	G		= "s|Holy Avenger",
-	["\\"]	= "m|/cast [@MOUSEOVER,dead][@TARGET,dead][] Redemption",  -- Redemption
+	["`"] = "s|Avenging Wrath",
+	E = "m|/stopcasting\n/cancelqueuedspell\n/cast [@FOCUS,known:Turn Evil][known:Turn Evil] Turn Evil",
+	--	F = "m|/castsequence reset=combat item:241305", -- EQol macro
+	R = "m|/use 13",
+	["\\"] = "m|/cast [@MOUSEOVER,dead,help][] Redemption",
 
 	shift = {
 		-- Mouse based
-		BUTTON3	= "s|Hammer of Justice",          -- Stun
-		[6]		= "s|Guardian of Ancient Kings",  -- Damage Reduction
-		[7]		= "m|/cast Divine Shield",
+		BUTTON3 = "m|/stopcasting\n/cancelqueuedspell\n/cast [@FOCUS,exists,harm][] Hammer of Justice",
+		BUTTON5 = "s|Judgment",
+		[6] = "m|/stopcasting\n/cancelqueuedspell\n/cast Divine Shield",
+		[8] = "",
+		[9] = "",
 
 		-- Keyboard based
-		[1]		= "m|/cast [@MOUSEOVER,help][] Hand of Protection",
-		[2]		= "m|/cast [@MOUSEOVER,help][] Hand of Freedom",
-		[3]		= "m|/cast [@MOUSEOVER,help][] Hand of Salvation",
-		[4]		= "m|/cast [@MOUSEOVER,help][] Hand of Sacrifice",
-		E		= "m|/stopcasting\n/cast [@FOCUS,exists,harm][] Hand of Reckoning",  -- Focus taunt
-		F		= "m|/use Healthstone",
---		R		= "m|/use 14",  -- Trinket Slot 2
+		--		[1] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Protection',
+		--		[2] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Freedom',
+		--		[3] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Sacrifice',
+		--		[4] 	= 'm|/cast [@MOUSEOVER,help][] Blessing of Sanctuary',
+
+		C = "s|Arcane Torrent",
+		E = "m|/stopcasting\n/cancelqueuedspell\n/cast [@FOCUS,exists,harm][] Hand of Reckoning",
+		R = "m|/use 14",
 	},
 
 	alt = {
 		-- Mouse based
-		BUTTON3	= "m|/cast [talent:2/2] Repentance; [talent:2/3] Blinding Light",
-		[9]		= "m|/cast [talent:1/1] Speed of Light",
+		BUTTON3 = "m|/cast [@FOCUS,known:Repentance][known:Repentance] Repentance; [known:Blinding Light] Blinding Light",
+		BUTTON4 = "m|/cast [known:Holy Prism,@TARGET,harm] Holy Prism\n/cast [known:Divine Toll][] Divine Toll",
 	},
 
 	ctrl = {
 		-- Mouse based
-		[6]     = "m|/stopcasting\n/cast [@MOUSEOVER,help][@TARGET,help][@PLAYER] Lay on Hands",  -- Damage Reduction 4
-	},
+		BUTTON5 = "s|Hammer of Wrath",
+		--		[6] 	= 'm|/stopmacro\n/cast [@MOUSEOVER,help][@TARGET,help][@PLAYER] Lay on Hands',
 
+		-- Keyboard based
+		--		['\\'] = 'm|/cast [@MOUSEOVER,help,dead][] Intercesson'
+	},
 }
 
 local prot = {
-	-- Mouse based
-	[9]		= "m|/cast [talent:6/1][@PLAYER] Holy Prism; [talent:6/2] Light's Hammer; [talent:6/3] Execution Sentence",  -- Lvl 90 talent
-    
+	BUTTON3 = "m|/stopcasting\n/cancelqueuedspell\n/cast [@FOCUS,exists,harm][] Rebuke",
+	BUTTON4 = "s|Avenger's Shield", -- Main rotation
+	[6] = "s|Guardian of Ancient Kings",
+
 	shift = {
 		-- Mouse based
-		BUTTON4	= "s|Avenger's Shield",         -- Main rotation
-		BUTTON5 = "s|Hammer of the Righteous",  -- Main rotation
-		[8]     = "s|Shield of the Righteous",  -- HoPo user
-        ["#"] = "m|/castsequence !Seal of Righteousness, !Seal of Insight", -- Empowered Seals
 	},
 
 	alt = {
 		-- Mouse based
-		BUTTON4	= "s|Consecration",     -- Main rotation
-		BUTTON5 = "s|Holy Wrath",       -- Main rotation
-		[6]     = "s|Ardent Defender",  -- Damage Reduction 3
+		["#"] = "m|/cast [@TARGET,harm] Shield of the Righteous",
+	},
+
+	ctrl = {
+		[6] = "s|Ardent Defender", -- Damage Reduction 3
 	},
 }
 
-local retri = {
-	-- Mouse based
-	[9]		= "m|/cast [talent:6/1] Holy Prism; [talent:6/2] Light's Hammer; [talent:6/3] Execution Sentence",  -- Lvl 90 talent
+--[[
+		(Row 1 = unmod, Row 2 = shift, Row 3 = alt, Row 4 = ctrl)
 
-	-- Keyboard based
-	F     = "m|/stopcasting\n/cast Emancipate\n/cast Every Man for Himself",        -- Overwrite Every man for himself
-	["`"] = "m|/use Draenic Strength Potion\n/cast Avenging Wrath",  -- Avenging Wrath
+		BUTTON5 -> CORE [HEALING]
+		Flash of Light
+
+		BUTTON5 -> CORE [DPS]
+		Crusader Strike
+		Judgment
+		Consecrate
+		Hammer of Wrath
+
+		SIDE BUTTON [;] -> HOPO SPENDERS
+		Word of Glory
+		Templar's Verdict
+		Divine Storm
+
+		BUTTON4 -> ROTATIONAL TALENTS
+		Blade of justice
+		Wake of Ashes
+
+		KEYBOARD [`]-> PERSONAL COOLDOWNS
+		Avenging Wrath
+
+		TOP FIRST BUTTON [6] -> DEFENSIVE COOLDOWNS
+		Shield of Vengeance
+		Divine Shield
+		Lay on Hands
+]]
+local ret = {
+	-- Mouse based
+	BUTTON3 = "m|/stopcasting\n/cancelqueuedspell\n/cast [@FOCUS,exists,harm][] Rebuke",
+	BUTTON4 = "s|Blade of Justice",
+	[6] = "s|Divine Protection",
 
 	shift = {
 		-- Mouse based
-		BUTTON4	= "s|Exorcism",                  -- Main rotation
-		BUTTON5 = "s|Hammer of the Righteous",   -- Main rotation
-		[8]     = "s|Templar's Verdict",         -- HoPo user
-        ["#"]   = "s|Seraphim"
-	},
-
-	alt = {
-		-- Mouse based
-		BUTTON4	= "s|Divine Storm",  -- Main rotation
-	},
-}
-
-local holy = {
-	-- Mouse based
-	[9]		= "m|/cast [talent:6/1] Holy Prism; [talent:6/2] Light's Hammer; [talent:6/3] Execution Sentence",  -- Lvl 90 talent
-
-	["`"] = "m|/cast Avenging Wrath",                   -- Avenging Wrath /use 12\n/use 13\n
-	["V"] = "m|/cast [@MOUSEOVER,help][@TARGET,help][] Beacon of Light",
-
-	shift = {
-		-- Mouse based
-		BUTTON4 = "m|/cast [@TARGET,harm][] Denounce",
-		BUTTON5	= "m|/cast [@TARGET,harm][] Holy Shock",
-		[8]     = "s|Light of Dawn",                      -- HoPo user
+		BUTTON4 = "m|/use 13\n/cast Wake of Ashes", -- True for 11.2 and Priory trinket
+		["#"] = "s|Templar's Verdict",        -- HoPo spender (3*)
 
 		-- Keyboard based
-		["V"]   = "m|/cast [@MOUSEOVER,help][@TARGET,help][] Beacon of Faith",
+		F = "m|/use Fleeting Tempered Potion\n/use Tempered Potion",
 	},
 
 	alt = {
 		-- Mouse based
+		["#"] = "s|Divine Storm", -- HoPo spender (3*)
+
+		-- Keyboard
+	},
+
+	ctrl = {
+		["#"] =
+		"m|/cast [@CURSOR,known:Final Reckoning][known:Final Reckoning] Final Reckoning; [known:Execution Sentence] Execution Sentence",
+	},
+}
+
+--[[
+		(Row 1 = unmod, Row 2 = shift, Row 3 = alt, Row 4 = ctrl)
+
+		BUTTON5 -> CORE [HEALING]
+		Holy Shock
+		Flash of Light
+		Holy Light
+		Light of the Martyr
+
+		BUTTON5 -> CORE [DPS]
+		Crusader Strike
+		Judgment
+		Consecrate
+		Hammer of Wrath
+
+		SIDE BUTTON [;] -> HOPO SPENDERS
+		Word of Glory
+		Light of Dawn
+		Shield of the Righteous
+
+		BUTTON4 -> ROTATIONAL TALENTS
+		Light's Hammer / Holy Prism
+
+		KEYBOARD [`]-> OFFENSIVE COOLDOWNS
+		Avenging Wrath
+
+		TOP FIRST BUTTON [6] -> SELF DEFENCE COOLDOWNS
+		Divine Protection
+		Divine Shield
+		-
+		Lay on Hands
+
+		TOP SECOND BUTTON [7] -> DEFENSIVE COOLDOWNS
+		Divine Favor / Hand of Divinity
+		Tyr's Deliverance
+		Daybreak
+		Aura Mastery
+]]
+local holy = {
+	-- Mouse based
+	[6] = "s|Divine Protection",
+	[7] = "s|Aura Mastery",
+
+	-- Keyboard based
+	C = "s|Cleanse",
+	["`"] = "m|/use 13\n/cast Avenging Wrath", -- True for 11.2 and Priory trinket
+
+	shift = {
+		-- Mouse based
+		["#"] = "s|Light of Dawn",
+
+		-- Keyboard based
+		F = "m|/use Fleeting Tempered Potion\n/use Tempered Potion",
+	},
+
+	alt = {
+		-- Mouse based
+		["#"] = "m|/cast Shield of the Righteous",
+
+		-- Keyboard based
+		["\\"] = "s|Absolution",
+		F = "m|/use Algari Mana Potion",
+	},
+
+	ctrl = {
+		-- Mouse based
+
+		-- Keyboard based
 	},
 }
 
 draeBindings:RegisterKeyBindings("Protection", bindings.base, palaBase, prot)
-draeBindings:RegisterKeyBindings("Retribution", bindings.base, palaBase, retri)
+draeBindings:RegisterKeyBindings("Retribution", bindings.base, palaBase, ret)
 draeBindings:RegisterKeyBindings("Holy", bindings.base, palaBase, holy)

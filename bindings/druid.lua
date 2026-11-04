@@ -1,4 +1,4 @@
-if (select(2, UnitClass"player") ~= "DRUID") then return end
+if (select(2, UnitClass"player") ~= "DRUID") or draeBindings.isForever then return end
 
 local _, bindings = ...
 
@@ -17,56 +17,122 @@ local _, bindings = ...
 --]]
 
 local druidBase = {
-	-- Mouse
+	-- Mouse based
 
-	-- Keyboard
-	["\\"]	= "m|/cast [@MOUSEOVER,help][] Revive",
+	-- Keyboard based
+
+	shift = {
+		-- Mouse based
+
+		-- Keyboard based
+	},
 
 	alt = {
-		-- Mouse
-		[6]		= "s|Innervate",
+		-- Mouse based
 
-		-- Keyboard
+		-- Keyboard based
 	},
 
 	ctrl = {
-		["\\"]	= "m|/cast Nature's Swiftness\n/cast [@MOUSEOVER,help][] Rebirth",
+		-- Mouse based
+
+		-- Keyboard based
 	}
 }
 
 local balance = {
-	-- Mouse
-	["'"] 	= "s|Wrath",
-}
+	-- Mouse based
 
-local feral = {
-}
-
-local guardian = {
-}
-
-local restoration = {
-	-- Mouse
-	["'"] 	= "s|Wrath",
-
-	-- Keyboard
-	["`"] 	= "m|/use 12\n/use 13\n/cast Nature's Vigil\n/cast Incarnation",
-
+	-- Keyboard based
 
 	shift = {
-		-- Mouse
+		-- Mouse based
 
-		-- Keyboard
+		-- Keyboard based
 	},
 
 	alt = {
+		-- Mouse based
 
-	-- Keyboard
+		-- Keyboard based
 	},
 
 	ctrl = {
+		-- Mouse based
 
+		-- Keyboard based
+	}
+}
 
+local feral = {
+	-- Mouse based
+
+	-- Keyboard based
+
+	shift = {
+		-- Mouse based
+
+		-- Keyboard based
+	},
+
+	alt = {
+		-- Mouse based
+
+		-- Keyboard based
+	},
+
+	ctrl = {
+		-- Mouse based
+
+		-- Keyboard based
+	}
+}
+
+local guardian = {
+	-- Mouse based
+
+	-- Keyboard based
+
+	shift = {
+		-- Mouse based
+
+		-- Keyboard based
+	},
+
+	alt = {
+		-- Mouse based
+
+		-- Keyboard based
+	},
+
+	ctrl = {
+		-- Mouse based
+
+		-- Keyboard based
+	}
+}
+
+local restoration = {
+	-- Mouse based
+
+	-- Keyboard based
+
+	shift = {
+		-- Mouse based
+
+		-- Keyboard based
+	},
+
+	alt = {
+		-- Mouse based
+
+		-- Keyboard based
+	},
+
+	ctrl = {
+		-- Mouse based
+
+		-- Keyboard based
 	}
 }
 

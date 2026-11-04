@@ -1,51 +1,93 @@
-if (select(2, UnitClass"player") ~= "WARRIOR") then return end
+if (select(2, UnitClass"player") ~= "WARRIOR") or draeBindings.isForever then return end
 
 local _, bindings = ...
 
 local warriorBase = {
 	BUTTON3 = "s|Pummel", -- Interrupt
-	BUTTON4	= "s|Victory Rush",
-
-	-- Mouse top three buttons
-	[5] 	= "s|Shield Wall", -- Damage Reduction 1
-	[6]		= "s|Charge",
+	[9] 	= "s|Charge",
 
 	-- Keyboard only
-	E 		= "m|/stopcasting\n/cast [nostance:2] Defensive Stance; [stance:2, target=mouseover, exists, harm][stance:2, nodead, harm][stance:2, target=targettarget, nodead, harm][stance:2] Taunt",
-	F 		= "m|/stopcasting\n/qc\n/cast Stoneform",
+	C 		= "m|/stopcasting\n/qc\n/cast Shadowmeld",
+	E		= "s|Taunt",
+	F		= "s|Berserker Rage",
 	R		= "m|/qc\n/use 13", -- Trinket Slot 1
 
 	shift = {
-		BUTTON5 = "s|Slam",
+		[9]		= "m|/cast [@CURSOR] Heroic Leap",
+	},
 
-		[1]		= "s|Battle Stance",
-		[2]		= "s|Berserker Stance",
-		[3]		= "s|Defensive Stance",
+	alt = {
 	},
 
 	ctrl = {
+		BUTTON4	= "s|Victory Rush",
 	},
 }
 
 local arms = {
-	BUTTON5	= "s|Heroic Strike",
-	["'"]	= "s|Mortal Strike",
-	["#"]	= "s|Overpower", -- Main rotation
+	BUTTON4 = "s|Overpower",
+	BUTTON5 = "s|Slam",
+	[";"] 	= "s|Whirlwind",
+	[6]		= "s|Die by the Sword",
+
+	["`"] 	= "s|Avatar",
 
 	shift = {
-		["'"] = "s|Cleave",
+		BUTTON4	= "s|Cleave",
+		BUTTON5	= "s|Mortal Strike",
+		[";"]	= "s|Bladestorm",
+		[6]		= "s|Rallying Cry",
 	},
 
 	alt = {
-		["#"] = "m|/cast [nomod,nostance:1] Battle Stance\n/cast Rend",
-		["'"]	= "s|Execute",
+		BUTTON4 = "s|Colossus Smash",
+		BUTTON5	= "s|Execute",
 	},
+
+	ctrl = {
+	}
 }
 
 local fury = {
+	BUTTON4 = "s|Raging Blow",
+	BUTTON5	= "s|Furious Slash",
+	[";"] = "s|Whirlwind",
+	["`"] = "s|Battle Cry",
+
+	shift = {
+		BUTTON4 = "s|Rampage",
+		BUTTON5 = "s|Bloodthirst"
+	},
+
+	alt = {
+		BUTTON5 = "s|Execute",
+	},
+
 }
 
 local prot = {
+	BUTTON5 = "s|Devastate",
+	[";"]	= "s|Shield Slam",
+	[6]		= "s|Demoralizing Shout",
+	[9]		= "s|Shockwave",
+	
+	shift = {
+		BUTTON5 = "s|Revenge",
+		[";"] 	= "s|Shield Block",
+		[6]		= "s|Last Stand",
+	},
+
+	alt = {
+		BUTTON5 = "s|Thunder Clap",
+		[";"] 	= "s|Ignore Pain",
+		[6]		= "s|Shield Wall",
+		[9] 	= "s|Intercept",
+	},
+
+	ctrl = {
+		[6]		= "s|Spell Reflection",
+	},
+
 }
 
 draeBindings:RegisterKeyBindings("Arms", bindings.base, warriorBase, arms)
